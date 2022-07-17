@@ -1,0 +1,21 @@
+header {
+    width: 100%;
+    position: relative;
+    min-height: 35rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    text-align: center;
+}
+@media (min-width: 992px) {
+    header {
+        height: 100vh;
+        padding: 0;
+    }
+}
+@media (max-width: 992px) {
+    header {
+        height: auto;
+    }
+}

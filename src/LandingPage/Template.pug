@@ -1,0 +1,9 @@
+div
+    dynamic-component(v-bind:component_infos='navbar_section')
+    dynamic-component(v-bind:component_infos='header_section')
+    dynamic-component(
+        v-for='contentSection in content_sections'
+        v-bind:component_infos='contentSection'
+    )
+    dynamic-component(v-bind:component_infos='contact_section')
+    dynamic-component(v-bind:component_infos='footer_section')

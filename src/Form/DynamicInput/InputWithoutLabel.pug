@@ -1,0 +1,44 @@
+.form-group
+    input.form-control(
+        v-if='isNumberInput'
+        v-bind:name='name'
+        v-bind:placeholder='label'
+        v-bind:value='defaultValue'
+        v-bind:required='required'
+        v-bind:type='value_type'
+        v-bind:max='max'
+        v-bind:class='invalidClass'
+    )
+    .invalid-feedback(
+        v-if='isNumberInput && validation_errors'
+        v-for='validationError in validation_errors'
+    )
+        | {{ validationError }}
+    input.form-control(
+        v-if='isTextInput'
+        v-bind:name='name'
+        v-bind:placeholder='label'
+        v-bind:value='defaultValue'
+        v-bind:required='required'
+        v-bind:type='value_type'
+        v-bind:maxlength='max'
+        v-bind:class='invalidClass'
+    )
+    .invalid-feedback(
+        v-if='isTextInput && validation_errors'
+        v-for='validationError in validation_errors'
+    )
+        | {{ validationError }}
+    textarea.form-control(
+        v-if='isTextArea'
+        v-bind:name='name'
+        v-bind:placeholder='label'
+        v-bind:value='defaultValue'
+        v-bind:required='required'
+        v-bind:class='invalidClass'
+    )
+    .invalid-feedback(
+        v-if='isTextArea && validation_errors'
+        v-for='validationError in validation_errors'
+    )
+        | {{ validationError }}

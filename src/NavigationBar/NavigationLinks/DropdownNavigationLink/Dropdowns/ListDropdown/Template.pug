@@ -1,0 +1,5 @@
+.dropdown-menu.dropdown-menu-right.dropdown-submenu.shadow.animated--grow-in(v-bind:aria-labelledby='dropdown_link_id')
+    dynamic-component(
+        v-for='dropdownItemSection in dropdown_item_sections'
+        v-bind:component_infos='dropdownItemSection'
+    )

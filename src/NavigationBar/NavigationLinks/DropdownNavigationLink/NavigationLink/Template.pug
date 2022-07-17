@@ -1,0 +1,16 @@
+li.nav-item.dropdown.no-arrow
+    a.nav-link.navigation-link.dropdown-toggle(
+        v-bind:id='dropdownLinkId'
+        href='#' 
+        role='button' 
+        data-toggle='dropdown'
+        data-bs-toggle='dropdown'
+        aria-haspopup='true' 
+        aria-expanded='false'
+    )
+        i(v-if='icon_class' v-bind:class='icon_class')
+        | {{ badge_content }}
+        //span.badge.badge-danger.badge-counter(v-if='badge_content') {{ badge_content }}
+    dynamic-component(
+        v-bind:component_infos='dropdownSection'
+    )

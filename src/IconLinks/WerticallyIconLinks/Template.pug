@@ -1,0 +1,6 @@
+.d-flex.justify-content-center
+    dynamic-component(
+        v-for='icon_section in icon_sections'
+        v-bind:key='icon_section.id'
+        v-bind:component_infos='icon_section'
+    )

@@ -1,0 +1,6 @@
+.container-fluid
+	.row
+		.col-xl-3.col-lg-4.col-sm-6(v-for='column_section in column_sections')
+			dynamic-component(
+				v-bind:component_infos='column_section'
+			)
