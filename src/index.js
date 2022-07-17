@@ -34,6 +34,8 @@ window.mergeComponentClasses = function(componentClasses) {
 
 export default {
 	install(Vue) {
+		require('js-helper-methods')
+
 		if (!window.originalMergeStrategy) {
 			window.originalMergeStrategy = Vue.config.optionMergeStrategies.data
 		}
