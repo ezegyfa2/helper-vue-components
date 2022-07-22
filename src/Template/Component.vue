@@ -13,14 +13,14 @@
             return {
                 configChanged: false,
                 paramChanged: false,
-                main_template_path: {},
+                mainTemplatePath: {},
                 templates: {},
                 compiledTemplate: {}
             }
         },
         mounted() {
             let templateToCompile = {
-                template_path: this.main_template_path,
+                template_path: this.mainTemplatePath,
                 params: this.params
             }
             this.compiledTemplate = this.replaceConfigTemplates(templateToCompile)
