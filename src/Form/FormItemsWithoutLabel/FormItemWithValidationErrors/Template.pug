@@ -1,0 +1,6 @@
+.form-item
+    slot.form-item-control(class='invalidClass')
+    .invalid-feedback(
+        v-for='validationError in validation_errors'
+    )
+        | {{ validationError }}

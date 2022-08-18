@@ -75,8 +75,16 @@ export default {
 		Vue.component('development-child', require('./DevelopmentTest/Child.vue').default);
 		Vue.component('ajax-component', require('./AjaxComponent.vue').default);
 		Vue.component('ajax-table', require('./AjaxTable.vue').default);
-		Vue.component('vue-select', require('./Select/Component.vue').default);
 		Vue.component('right-content', require('./RightContent/Component.vue').default);
+		
+		Vue.component('vue-select', require('./Form/Select/Component.vue').default);
+		Vue.component('form-item-with-validation-errors', require('./Form/FormItemsWithoutLabel/FormItemWithValidationErrors/Component.vue').default);
+		Vue.component('form-item-with-label', require('./Form/FormItems/FormItemWithLabel/Component.vue').default);
 		Vue.component('csrf-input', require('./CsrfInput/Component.vue').default);
+		
+		require('./Form/FormItems/register.js').default.install(Vue)
+		require('./Form/FormItemsWithoutLabel/register.js').default.install(Vue)
+		require('./Form/BootstrapFormItems/FormItems/register.js').default.install(Vue)
+		require('./Form/BootstrapFormItems/FormItemsWithoutLabel/register.js').default.install(Vue)
 	}
 };
