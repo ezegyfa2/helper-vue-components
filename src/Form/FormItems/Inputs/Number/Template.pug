@@ -5,7 +5,7 @@ form-item-with-label(
     input.form-item-control(
         v-bind:name='name'
         v-bind:placeholder='placeholder'
-        v-bind:value='value'
+        v-model='currentValue'
         v-bind:required='required'
         type='number'
         v-bind:min='min'

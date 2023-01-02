@@ -1,13 +1,15 @@
-form-item-with-label(
-    v-bind:label='label'
-    v-bind:validation_errors='validation_errors'
-)
-    input.form-item-control(
+.form-check
+    input.form-check-input(
         v-bind:name='name'
         v-bind:placeholder='placeholder'
-        v-bind:checked='checked'
+        v-model='currentValue'
         v-bind:required='required'
         v-bind:class='invalidClass'
         v-bind:id='formItemId'
         type='checkbox'
     )
+    label(v-bind:for='formItemId') {{ label }}
+    .invalid-feedback(
+        v-for='validationError in validation_errors'
+    )
+        | {{ validationError }}

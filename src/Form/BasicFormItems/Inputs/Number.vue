@@ -12,6 +12,11 @@
             max: {
                 type: Number
             }
+        },
+        methods: {
+            getInputValue(input) {
+                return parseInt(input.value)
+            }
         }
     }
 </script>

@@ -2,6 +2,22 @@ div
     dynamic-component(v-bind:component_infos='navbar_section')
     dynamic-component(v-bind:component_infos='header_section')
     dynamic-component(
+        v-for='success_message_section in success_message_sections'
+        v-bind:component_infos='success_message_section'
+    )
+    dynamic-component(
+        v-for='error_message_section in error_message_sections'
+        v-bind:component_infos='error_message_section'
+    )
+    dynamic-component(
+        v-for='warning_message_section in warning_message_sections'
+        v-bind:component_infos='warning_message_section'
+    )
+    dynamic-component(
+        v-for='info_message_section in info_message_sections'
+        v-bind:component_infos='info_message_section'
+    )
+    dynamic-component(
         v-for='contentSection in content_sections'
         v-bind:component_infos='contentSection'
     )

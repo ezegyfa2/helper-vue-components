@@ -1,8 +1,8 @@
 form-item-with-validation-errors(v-bind:validation_errors='validation_errors')
-    input.form-item-control(
+    input.form-check-input(
         v-bind:name='name'
         v-bind:placeholder='placeholder'
-        v-bind:checked='checked'
+        v-model='currentValue'
         v-bind:required='required'
         type='checkbox'
         v-bind:class='invalidClass'

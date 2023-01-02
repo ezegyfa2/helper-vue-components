@@ -1,3 +1,8 @@
-a(v-bind:href='url')
+component(
+    v-bind:is='iconType'
+    v-bind:href='url' 
+    @click='on_click()'
+    type='submit'
+)
     i(v-bind:class='icon_class')
     |  {{ content }}

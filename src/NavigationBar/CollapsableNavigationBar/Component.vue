@@ -9,6 +9,17 @@
         mixins: [
             ClassAdder
         ],
+        props: {
+            title: {
+                type: String
+            },
+            title_url: {
+                type: String
+            },
+            links: {
+                type: Array
+            }
+        },
         data() {
             return {
                 addedClasses: {
@@ -18,14 +29,6 @@
                         'py-lg-0',
                     ]
                 }
-            }
-        },
-        props: {
-            title: {
-                type: String
-            },
-            links: {
-                type: Array
             }
         },
         mounted() {
@@ -59,6 +62,11 @@
                     }
                 })
             })
+        },
+        computed: {
+            navigationBarId() {
+                return "navigation_bar_" + this._uid
+            }
         }
     }
 </script>

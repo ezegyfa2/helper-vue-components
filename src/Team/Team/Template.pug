@@ -1,0 +1,14 @@
+section#team.page-section.bg-light
+    .container
+        dynamic-component(
+            v-bind:component_infos='title_section'
+        )
+        .row.justify-content-center
+            .col-lg-3.col-md-4.col-sm-6(v-for="member in member_sections")
+                dynamic-component(
+                    v-bind:component_infos='member'
+                )
+        .row
+            .col-lg-8.mx-auto.text-center
+                p.large.text-muted
+                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.

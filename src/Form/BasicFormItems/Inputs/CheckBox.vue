@@ -1,22 +1,24 @@
 <script>
-    import FormItem from '../FormItem.vue'
+    import FormItemWithValueVue from '../FormItemWithValue.vue'
 
     export default {
         mixins: [
-            FormItem
+            FormItemWithValueVue
         ],
         props: {
-            default: {
-                type: Boolean
+            value: {
+                designType: Boolean
             }
         },
-        data() {
-            return {
-                checked: null
+        computed: {
+            convertedValue() {
+                if (this.value === true || this.value == '1') {
+                    return true
+                }
+                else {
+                    return false
+                }
             }
-        },
-        mounted() {
-            this.checked = this.default
         }
     }
 </script>

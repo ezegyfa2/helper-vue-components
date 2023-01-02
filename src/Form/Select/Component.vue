@@ -3,51 +3,73 @@
 </template>
 
 <script>
+    import Select from '../BasicFormItems/Select.vue'
+
     export default {
+        mixins: [
+            Select,
+        ],
         props: {
-            name: {
-                type: String
-            },
-            options: {
-                type: Array
-            },
-            default_selected_option_key: {
-                type: Number
+            live_search: {
+                type: Boolean,
+                default: true
             }
         },
         data() {
             return {
-                selectedOption: 0
+                selectedOption: {}
             }
-        },
-        mounted() {
-            if (this.default_selected_option_key) {
-                this.selectedOption = this.default_selected_option_key
-            }
-            let self = this
-            this.$refs.selectElement.addEventListener('change', (event) => {
-                self.$emit('update:selectedOption', parseInt(event.target.value))
-            })
         },
         computed: {
             configuredOptions() {
                 return this.options.map(option => {
-                    console.log(typeof(option))
                     if (typeof(option) == 'object') {
                         return option
                     }
                     else {
                         return {
                             value: option,
-                            label: option
+                            text: option
                         }
                     }
                 })
+            },
+            liveSearch() {
+                return this.live_search && (this.options.length > 15)
             }
         },
         watch: {
-            selectedOption(newSelectedOption) {
-                this.$refs.selectElement.value = newSelectedOption
+            selectedOption: {
+                immediate: true,
+                handler(newSelectedOption) {
+                    if (newSelectedOption) {
+                        if (this.currentValue != newSelectedOption.value) {
+                            this.currentValue = newSelectedOption.value
+                        }
+                    }
+                    else {
+                        this.currentValue = null
+                    }
+                }
+            },
+            currentValue: {
+                immediate: true,
+                handler(newValue) {
+                    if (this.selectedOption && this.selectedOption.value != newValue) {
+                        this.currentValue = newValue
+                        this.selectedOption = this.getSelectedOption()
+                    }
+                }
+            }
+        },
+        methods: {
+            getSelectedOption() {
+                for (const option of this.options) {
+                    if (option.value == this.currentValue) {
+                        return option
+                    }
+                }
+                return null
             }
         }
     }

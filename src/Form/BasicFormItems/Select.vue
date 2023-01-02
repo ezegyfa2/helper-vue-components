@@ -1,25 +1,21 @@
 <script>
-    import FormItem from './FormItem.vue'
+    import FormItemWithValue from './FormItemWithValue.vue'
 
     export default {
         mixins: [
-            FormItem
+            FormItemWithValue,
         ],
         props: {
-            default_selected_option_key: {
-                type: String
-            },
             options: {
                 type: Array
             }
         },
-        data() {
-            return {
-                selectedOptionKey: null
+        computed: {
+            optionValues() {
+                return this.options.map((option) => {
+                    return option.value
+                })
             }
-        },
-        mounted() {
-            this.selectedOptionKey = this.default_selected_option_key
         }
     }
 </script>

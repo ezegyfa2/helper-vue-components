@@ -1,20 +1,30 @@
 <script>
     import FormItem from './FormItem.vue'
+    import DataTransmitting from '../../DataTransmitting.vue'
 
     export default {
         mixins: [
-            FormItem
+            FormItem,
+            DataTransmitting,
         ],
         props: {
-            default: {},
+            value: {},
         },
         data() {
             return {
-                value: null
+                currentValue: null,
+                dataTransmits: {
+                    currentValue: 'value'
+                }
             }
         },
-        mounted() {
-            this.value = this.default
+        watch: {
+            currentValue: {
+                immediate: true,
+                handler(newValue) {
+                    this.$emit('update:value', newValue)
+                }
+            }
         }
     }
 </script>

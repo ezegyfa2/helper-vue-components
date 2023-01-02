@@ -1,0 +1,24 @@
+.table-responsive
+    table.table.table-bordered(width='100%' cellspacing='0')
+        thead
+            tr
+                th(v-for='columnName in convertedColumnNames') {{ columnName }}
+                th
+        tfoot(v-if='with_footer')
+            tr
+                th(v-for='columnName in convertedColumnNames') {{ columnName }}
+                th
+        tbody
+            tr(v-for='row in rows')
+                td(v-for='column in row') {{ column }}
+                td
+                    .d-flex
+                        edit-icon-link(
+                            v-bind:url='editUrl(row.id)'
+                        )
+                        form(method='post' v-bind:action='deleteUrl(row.id)')
+                            csrf-input
+                            input(type="hidden" name="_method" value="DELETE")
+                            delete-icon-link(
+                                v-bind:is_submit_button='true'
+                            )

@@ -1,0 +1,11 @@
+form-item-with-validation-errors(v-bind:validation_errors='validation_errors')
+    input.form-item-control(
+        v-bind:name='name'
+        v-model='currentValue'
+        v-bind:required='required'
+        type='datetime-local'
+        v-bind:min='min'
+        v-bind:max='max'
+        v-bind:class='invalidClass'
+        v-bind:id='formItemId'
+    )

@@ -1,0 +1,12 @@
+form(
+    v-bind:action='url'
+    v-bind:method='method'
+    v-on:submit='submitForm'
+)
+    csrf-input
+    dynamic-component(
+        v-for='formItemSection in convertedFormItemSections'
+        v-bind:component_infos='formItemSection'
+    )
+    .form-item
+        button.btn.btn-primary.form-item-control.text-align-center(type='submit' @click='submitForm') {{ button_title }}

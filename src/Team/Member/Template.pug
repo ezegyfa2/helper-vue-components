@@ -1,0 +1,8 @@
+.team-member
+    img.mx-auto.rounded-circle(v-bind:src='image_url' v-bind:alt='image_alt')
+    dynamic-component(
+        v-bind:component_infos='title_section'
+    )
+    dynamic-component(
+        v-bind:component_infos='contact_icons_section'
+    )

@@ -1,0 +1,10 @@
+header.masterhead(v-bind:id='id')
+    video-background(
+        v-bind:url='backgroundVideo.url' 
+        v-bind:video_type='backgroundVideo.type'
+        v-bind:poster_url='backgroundVideo.posterUrl'
+    )
+    .content.px-4.px-lg-5
+        dynamic-component(
+            v-bind:component_infos='title_section'
+        )

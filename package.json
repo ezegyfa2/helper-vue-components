@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ezegyfa2/helper-vue-components#readme",
   "dependencies": {
     "js-helper-methods": "*",
-    "bootstrap-select": "*"
+    "bootstrap-select": "*",
+    "vue-select-picker-bootstrap": "^1.0.5"
   }
 }

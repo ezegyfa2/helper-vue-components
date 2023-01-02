@@ -3,7 +3,12 @@
 </template>
 
 <script>
+    import SessionMessages from './../SessionMessages/SessionMessages.vue'
+
     export default {
+        mixins: [
+            SessionMessages,
+        ],
         props: {
             navbar_section: {
                 type: Object

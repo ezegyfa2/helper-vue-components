@@ -9,7 +9,7 @@
             return {
                 addedClasses: {
                     'root': 'form-group',
-                    '.form-item-control': 'selectpicker'
+                    'select': 'selectpicker'
                 }
             }
         }
