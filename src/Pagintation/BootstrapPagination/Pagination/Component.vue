@@ -3,7 +3,12 @@
 </template>
 
 <script>
+    import DataTransmitting from '../../../DataTransmitting.vue'
+
     export default {
+        mixins: [
+            DataTransmitting,
+        ],
         props: {
             selected_page_number: {
                 type: Number
@@ -16,6 +21,10 @@
             return {
                 selectedPageNumber: 0,
                 pageCount: 3,
+                dataTransmits: {
+                    pageCount: 'page_count',
+                    selectedPageNumber: 'selected_page_number'
+                },
             }
         },
         computed: {
@@ -35,6 +44,9 @@
             },
             isPreviousSelectable() {
                 return this.selectedPageNumber > 1
+            },
+            hasValidParams() {
+                return Number.isInteger(this.pageCount) && Number.isInteger(this.selectedPageNumber)
             }
         },
         methods: {
@@ -45,24 +57,6 @@
                 let link = new URL(window.location)
                 link.searchParams.set('page-number', pageNumber)
                 return link.toString()
-            }
-        },
-        watch: {
-            page_count: {
-                immediate: true,
-                handler(newPageCount) {
-                    if (this.pageCount != newPageCount) {
-                        this.pageCount = newPageCount
-                    }
-                }
-            },
-            selected_page_number: {
-                immediate: true,
-                handler(newSelectedPageNumber) {
-                    if (this.selectedPageNumber != newSelectedPageNumber) {
-                        this.selectedPageNumber = newSelectedPageNumber
-                    }
-                }
             }
         }
     }

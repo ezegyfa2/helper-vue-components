@@ -42,22 +42,19 @@
             selectedOption: {
                 immediate: true,
                 handler(newSelectedOption) {
-                    if (newSelectedOption) {
-                        if (this.currentValue != newSelectedOption.value) {
-                            this.currentValue = newSelectedOption.value
-                        }
-                    }
-                    else {
-                        this.currentValue = null
+                    if (newSelectedOption && this.getOptionValue(this.currentValue) != this.getOptionValue(newSelectedOption)) {
+                        this.currentValue = this.getOptionValue(newSelectedOption)
                     }
                 }
             },
             currentValue: {
                 immediate: true,
                 handler(newValue) {
-                    if (this.selectedOption && this.selectedOption.value != newValue) {
-                        this.currentValue = newValue
+                    console.log('currentValue ' + newValue)
+                    if (!this.selectedOption || this.getOptionValue(this.selectedOption) != this.getOptionValue(newValue)) {
+                        this.currentValue = this.getOptionValue(newValue)
                         this.selectedOption = this.getSelectedOption()
+                        console.log('selectedOption ' + this.selectedOption)
                     }
                 }
             }
@@ -65,11 +62,19 @@
         methods: {
             getSelectedOption() {
                 for (const option of this.options) {
-                    if (option.value == this.currentValue) {
+                    if (this.getOptionValue(option) == this.currentValue) {
                         return option
                     }
                 }
                 return null
+            },
+            getOptionValue(option) {
+                if (option && typeof(option) == 'object') {
+                    return option.value
+                }
+                else {
+                    return option
+                }
             }
         }
     }

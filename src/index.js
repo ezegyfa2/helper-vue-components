@@ -101,5 +101,6 @@ export default {
 		require('./Form/FormItemsWithoutLabel/register.js').default.install(Vue)
 		require('./Form/BootstrapFormItems/FormItems/register.js').default.install(Vue)
 		require('./Form/BootstrapFormItems/FormItemsWithoutLabel/register.js').default.install(Vue)
+		require('./Form/BootstrapFormItems/FilterFormItems/register.js').default.install(Vue)
 	}
 };

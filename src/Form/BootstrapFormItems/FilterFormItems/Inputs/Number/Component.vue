@@ -1,10 +1,10 @@
 <script>
-    import EmailInput from './../../../../FormItemsWithoutLabel/Inputs/Email/Component.vue'
+    import NumberInput from './../../../../FormItems/Inputs/Number/Component.vue'
     import BootstrapClassAdder from './../../../BootstrapClassAdder.vue'
 
     export default {
         mixins: [
-            EmailInput,
+            NumberInput,
             BootstrapClassAdder,
         ]
     }
