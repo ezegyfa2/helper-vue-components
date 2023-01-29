@@ -22,6 +22,7 @@
             currentValue: {
                 immediate: true,
                 handler(newValue) {
+                    console.log('currentValue ' + newValue)
                     this.$emit('update:value', newValue)
                 }
             }

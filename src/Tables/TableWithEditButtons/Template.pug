@@ -2,7 +2,10 @@
     table.table.table-bordered(width='100%' cellspacing='0')
         thead
             tr
-                th(v-for='columnName in convertedColumnNames') {{ columnName }}
+                th(v-for='filterSection in convertedFilterSections')
+                    dynamic-component(
+                        v-bind:component_infos='filterSection'
+                    )
                 th
         tfoot(v-if='with_footer')
             tr

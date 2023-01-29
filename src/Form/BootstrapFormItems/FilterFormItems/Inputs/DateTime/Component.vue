@@ -1,10 +1,10 @@
 <script>
-    import EmailInput from './../../../../FormItemsWithoutLabel/Inputs/Email/Component.vue'
+    import DateTimeInput from './../../../../FormItems/Inputs/DateTime/Component.vue'
     import BootstrapClassAdder from './../../../BootstrapClassAdder.vue'
 
     export default {
         mixins: [
-            EmailInput,
+            DateTimeInput,
             BootstrapClassAdder,
         ]
     }
