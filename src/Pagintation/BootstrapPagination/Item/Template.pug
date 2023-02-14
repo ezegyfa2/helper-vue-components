@@ -1,2 +1,9 @@
 li.paginate_button.page-item(v-bind:class='itemClass')
-    a.page-link(v-bind:href='url' aria-controls='dataTable' v-bind:data-dt-idx='item_text' tabindex='0') {{ item_text }}
+    a.page-link(
+        v-bind:href='url' 
+        aria-controls='dataTable' 
+        v-bind:data-dt-idx='item_text' 
+        tabindex='0'
+        @click='itemSelected'
+    ) 
+        | {{ item_text }}

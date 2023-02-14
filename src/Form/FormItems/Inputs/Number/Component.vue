@@ -3,12 +3,12 @@
 </template>
 
 <script>
-    import DateTimeInput from './../../../FormItemsWithoutLabel/Inputs/DateTime/Component.vue'
+    import NumberInput from './../../../FormItemsWithoutLabel/Inputs/Number/Component.vue'
     import FormItemWithLabel from './../../FormItemWithLabel/Component.vue'
 
     export default {
         mixins: [
-            DateTimeInput,
+            NumberInput,
             FormItemWithLabel,
         ]
     }

@@ -13,8 +13,18 @@
         computed: {
             optionValues() {
                 return this.options.map((option) => {
-                    return option.value
+                    return this.getOptionValue(option)
                 })
+            }
+        },
+        methods: {
+            getOptionValue(option) {
+                if (option && typeof(option) == 'object') {
+                    return option.value
+                }
+                else {
+                    return option
+                }
             }
         }
     }

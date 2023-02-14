@@ -96,7 +96,7 @@ export default {
 		registerVueComponent('bootstrap-pagination-item', require('./Pagintation/BootstrapPagination/Item/Component.vue').default, Vue);
 
 		
-		Vue.component('VSelect', require('vue-select-picker-bootstrap').default)
+		Vue.component('VSelect', require('./Form/VSelect/Component.vue').default)
 		require('./Form/FormItems/register.js').default.install(Vue)
 		require('./Form/FormItemsWithoutLabel/register.js').default.install(Vue)
 		require('./Form/BootstrapFormItems/FormItems/register.js').default.install(Vue)

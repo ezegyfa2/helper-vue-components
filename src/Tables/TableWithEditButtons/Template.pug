@@ -2,14 +2,20 @@
     table.table.table-bordered(width='100%' cellspacing='0')
         thead
             tr
-                th(v-for='filterSection in convertedFilterSections')
-                    dynamic-component(
-                        v-bind:component_infos='filterSection'
+                //th(v-for='filterSection in filterSections')
+                    component(
+                        v-if='filterFormItemTypePrefix'
+                        v-bind:key='filterSection.name'
+                        v-bind:ref='filterSection.name'
+                        v-bind:is='filterSection.type'
+                        v-bind='filterSection.data'
+                        v-bind:value='filterSection.data.value'
+                        v-bind:from_value='filterSection.data.from_value'
+                        v-bind:to_value='filterSection.data.to_value'
+                        v-on:update:value='(newValue) => { filterValueUpdated(filterSection, newValue) }'
+                        v-on:update:from_value='(newValue) => { filterFromValueUpdated(filterSection, newValue) }'
+                        v-on:update:to_value='(newValue) => { filterToValueUpdated(filterSection, newValue) }'
                     )
-                th
-        tfoot(v-if='with_footer')
-            tr
-                th(v-for='columnName in convertedColumnNames') {{ columnName }}
                 th
         tbody
             tr(v-for='row in rows')
@@ -25,3 +31,7 @@
                             delete-icon-link(
                                 v-bind:is_submit_button='true'
                             )
+        tfoot(v-if='with_footer')
+            tr
+                th(v-for='columnName in convertedColumnNames') {{ columnName }}
+                th

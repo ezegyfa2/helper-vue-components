@@ -17,7 +17,7 @@
         },
         data() {
             return {
-                selectedOption: {}
+                selectedOption: null
             }
         },
         computed: {
@@ -40,41 +40,37 @@
         },
         watch: {
             selectedOption: {
-                immediate: true,
                 handler(newSelectedOption) {
-                    if (newSelectedOption && this.getOptionValue(this.currentValue) != this.getOptionValue(newSelectedOption)) {
-                        this.currentValue = this.getOptionValue(newSelectedOption)
+                    console.log('selected option')
+                    if (newSelectedOption && this.getOptionValue(this.value) != this.getOptionValue(newSelectedOption)) {
+                        console.log('change value')
+                        this.$emit('update:value', this.getOptionValue(newSelectedOption))
                     }
-                }
+                },
+                flush: 'sync'
             },
-            currentValue: {
+            value: {
                 immediate: true,
                 handler(newValue) {
-                    console.log('currentValue ' + newValue)
-                    if (!this.selectedOption || this.getOptionValue(this.selectedOption) != this.getOptionValue(newValue)) {
-                        this.currentValue = this.getOptionValue(newValue)
+                    console.log('value ' + newValue)
+                    if (newValue && (!this.selectedOption || this.getOptionValue(this.selectedOption) != this.getOptionValue(newValue))) {
+                        console.log('change selectedOption')
                         this.selectedOption = this.getSelectedOption()
-                        console.log('selectedOption ' + this.selectedOption)
+                        //console.log('pre-selectedOption ' + this.getSelectedOption().value)
+                        //console.log('post-selectedOption ' + this.selectedOption.value)
                     }
-                }
+                },
+                flush: 'sync'
             }
         },
         methods: {
             getSelectedOption() {
-                for (const option of this.options) {
-                    if (this.getOptionValue(option) == this.currentValue) {
+                for (const option of this.configuredOptions) {
+                    if (this.getOptionValue(option) == this.value) {
                         return option
                     }
                 }
                 return null
-            },
-            getOptionValue(option) {
-                if (option && typeof(option) == 'object') {
-                    return option.value
-                }
-                else {
-                    return option
-                }
             }
         }
     }

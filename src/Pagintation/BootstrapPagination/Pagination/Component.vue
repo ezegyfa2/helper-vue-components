@@ -16,6 +16,10 @@
             page_count: {
                 type: Number
             },
+            url_enabled: {
+                type: Boolean,
+                default: true
+            }
         }, 
         data() {
             return {
@@ -54,9 +58,26 @@
                 return pageNumber == this.selectedPageNumber
             },
             getUrl(pageNumber) {
-                let link = new URL(window.location)
-                link.searchParams.set('page-number', pageNumber)
-                return link.toString()
+                if (this.url_enabled) {
+                    let link = new URL(window.location)
+                    link.searchParams.set('page-number', pageNumber)
+                    return link.toString()
+                }
+                else {
+                    return '#'
+                }
+            },
+            selectPage(pageNumber) {
+                this.selectedPageNumber = pageNumber
+            }
+        },
+        watch: {
+            selectedPageNumber: {
+                handler(newSelectedPageNumber) {
+                    this.$nextTick(() => {
+                        this.$emit('update:selected_page_number', newSelectedPageNumber)
+                    })
+                }
             }
         }
     }

@@ -9,23 +9,6 @@
         ],
         props: {
             value: {},
-        },
-        data() {
-            return {
-                currentValue: null,
-                dataTransmits: {
-                    currentValue: 'value'
-                }
-            }
-        },
-        watch: {
-            currentValue: {
-                immediate: true,
-                handler(newValue) {
-                    console.log('currentValue ' + newValue)
-                    this.$emit('update:value', newValue)
-                }
-            }
         }
     }
 </script>

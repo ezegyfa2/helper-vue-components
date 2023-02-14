@@ -14,8 +14,10 @@
             for (const [dataName, propertyName] of Object.entries(this.dataTransmits)) {
                 this[dataName] = this[propertyName]
                 let self = this
-                this.initDeepWatcher(propertyName, function(newValue) {
-                    self[dataName] = newValue
+                this.initDeepWatcher(propertyName, function(newValue, oldValue) {
+                    if (self[dataName] !== newValue) {
+                        self[dataName] = newValue
+                    }
                 })
             }
         }

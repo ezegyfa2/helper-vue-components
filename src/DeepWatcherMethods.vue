@@ -9,12 +9,15 @@
             },
             initDeepWatcher(watcherName, handler) {
                 let self = this
-                this.$watch(watcherName, function(newValue) {
-                    handler(newValue)
-                    self.$forceUpdate()
+                this.$watch(watcherName, function(newValue, oldValue) {
+                    if (typeof newValue !== 'undefined') {
+                        handler(newValue, oldValue)
+                    }
+                    //self.$forceUpdate()
                 }, {
                     immediate: true,
-                    deep: true
+                    deep: true,
+                    flush: 'sync'
                 })
             }
         }

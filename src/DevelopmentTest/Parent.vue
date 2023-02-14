@@ -1,3 +1,7 @@
+<template>
+    <child :prop1="data2">
+</template>
+
 <script>
     import GrandParent from './GrandParent.vue'
 
@@ -5,8 +9,13 @@
         mixins: [
             GrandParent
         ],
-        props: {
-            
+        data() {
+            return {
+                data2: 1
+            }
+        },
+        mounted() {
+            this.data2 = 2
         }
     }
 </script>

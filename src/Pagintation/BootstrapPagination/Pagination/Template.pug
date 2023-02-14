@@ -4,6 +4,7 @@
             item_text='Previous' 
             v-bind:is_selectable='isPreviousSelectable' 
             v-bind:url='getUrl(selectedPageNumber - 1)'
+            @itemSelected='selectPage(selectedPageNumber - 1)'
         )
         bootstrap-pagination-item(
             v-if='pageCount > 0 && pageCount < 7' 
@@ -12,6 +13,7 @@
             v-bind:item_text='i.toString()' 
             v-bind:is_selected='isSelected(i)'
             v-bind:url='getUrl(i)'
+            @itemSelected='selectPage(i)'
         )
 
         bootstrap-pagination-item(
@@ -19,18 +21,21 @@
             item_text='1' 
             v-bind:is_selected='isSelected(1)'
             v-bind:url='getUrl(1)'
+            @itemSelected='selectPage(1)'
         )
         bootstrap-pagination-item(
             v-if='pageCount >= 7' 
             item_text='2' 
             v-bind:is_selected='isSelected(2)'
             v-bind:url='getUrl(2)'
+            @itemSelected='selectPage(2)'
         )
         bootstrap-pagination-item(
             v-if='pageCount >= 7' 
             item_text='3' 
             v-bind:is_selected='isSelected(3)'
             v-bind:url='getUrl(3)'
+            @itemSelected='selectPage(3)'
         )
 
         bootstrap-pagination-item(
@@ -43,30 +48,35 @@
             v-bind:item_text='(selectedPageNumber - 2).toString()' 
             v-bind:is_selected='isSelected(selectedPageNumber - 2)'
             v-bind:url='getUrl(selectedPageNumber - 2)'
+            @itemSelected='selectPage(selectedPageNumber - 2)'
         )
         bootstrap-pagination-item(
             v-if='pageCount >= 7 && selectedPageNumber > 4 && selectedPageNumber < pageCount - 1' 
             v-bind:item_text='(selectedPageNumber - 1).toString()' 
             v-bind:is_selected='isSelected(selectedPageNumber - 1)'
             v-bind:url='getUrl(selectedPageNumber - 1)'
+            @itemSelected='selectPage(selectedPageNumber - 1)'
         )
         bootstrap-pagination-item(
             v-if='pageCount >= 7 && selectedPageNumber > 3 && selectedPageNumber < pageCount - 2' 
             v-bind:item_text='selectedPageNumber.toString()' 
             v-bind:is_selected='isSelected(selectedPageNumber)'
             v-bind:url='getUrl(selectedPageNumber)'
+            @itemSelected='selectPage(selectedPageNumber)'
         )
         bootstrap-pagination-item(
             v-if='pageCount >= 7 && selectedPageNumber > 2 && selectedPageNumber < pageCount - 3' 
             v-bind:item_text='(selectedPageNumber + 1).toString()' 
             v-bind:is_selected='isSelected(selectedPageNumber + 1)'
             v-bind:url='getUrl(selectedPageNumber + 1)'
+            @itemSelected='selectPage(selectedPageNumber + 1)'
         )
         bootstrap-pagination-item(
             v-if='pageCount >= 7 && selectedPageNumber > 1 && selectedPageNumber < pageCount - 4' 
             v-bind:item_text='(selectedPageNumber + 2).toString()' 
             v-bind:is_selected='isSelected(selectedPageNumber + 2)'
             v-bind:url='getUrl(selectedPageNumber + 2)'
+            @itemSelected='selectPage(selectedPageNumber + 2)'
         )
         bootstrap-pagination-item(
             v-if='pageCount >= 7 && selectedPageNumber < pageCount - 5' 
@@ -79,22 +89,26 @@
             v-bind:item_text='(pageCount - 2).toString()' 
             v-bind:is_selected='isSelected(pageCount - 2)'
             v-bind:url='getUrl(pageCount - 2)'
+            @itemSelected='selectPage(pageCount - 2)'
         )
         bootstrap-pagination-item(
             v-if='pageCount >= 7' 
             v-bind:item_text='(pageCount - 1).toString()' 
             v-bind:is_selected='isSelected(pageCount - 1)'
             v-bind:url='getUrl(pageCount - 1)'
+            @itemSelected='selectPage(pageCount - 1)'
         )
         bootstrap-pagination-item(
             v-if='pageCount >= 7' 
             v-bind:item_text='pageCount.toString()' 
             v-bind:is_selected='isSelected(pageCount)'
             v-bind:url='getUrl(pageCount)'
+            @itemSelected='selectPage(pageCount)'
         )
 
         bootstrap-pagination-item(
             item_text='next' 
             v-bind:is_selectable='isNextSelectable'
             v-bind:url='getUrl(selectedPageNumber + 1)'
+            @itemSelected='selectPage(selectedPageNumber + 1)'
         )

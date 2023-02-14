@@ -3,28 +3,26 @@
 </template>
 
 <script>
-    import Parent from './Parent.vue'
+    //import Parent from './Parent.vue'
 
     export default {
-        mixins: [
-            Parent
-        ],
+        //mixins: [
+        //    Parent
+        //],
         props: {
-            
+            prop1: {
+                type: String
+            }
         },
         data() {
             return {
                 data1: 1
             }
         },
-        mounted() {
-            this.data1 = 3
-        },
         watch: {
             data1: {
-                immediate: true,
                 handler(newData1) {
-                    this['data1'] = Object.assign({}, newData1)
+                    this.$emit('update:prop1', newData1)
                 }
             }
         }

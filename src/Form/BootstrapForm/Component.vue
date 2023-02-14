@@ -7,7 +7,7 @@
         ],
         data() {
             return {
-                formItemTypePrefix: 'bootstrap-form-item'
+                formItemTypePrefix: 'bootstrap'
             }
         }
     }

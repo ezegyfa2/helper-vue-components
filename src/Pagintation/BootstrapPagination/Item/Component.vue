@@ -33,6 +33,11 @@
                     return 'unclickable'
                 }
             }
+        },
+        methods: {
+            itemSelected() {
+                this.$emit('itemSelected')
+            }
         }
     }
 </script>

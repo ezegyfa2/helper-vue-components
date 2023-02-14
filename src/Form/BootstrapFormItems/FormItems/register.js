@@ -1,6 +1,6 @@
 export default {
     install(Vue) {
-        let prefix = 'bootstrap-form-item'
+        let prefix = 'bootstrap'
 		registerVueComponent(prefix + '-checkbox-input', require('./Inputs/CheckBox/Component.vue').default, Vue)
 		registerVueComponent(prefix + '-number-input', require('./Inputs/Number/Component.vue').default, Vue)
 		registerVueComponent(prefix + '-text-input', require('./Inputs/Text/Component.vue').default, Vue)

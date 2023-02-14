@@ -30,8 +30,10 @@
         data() {
             return {
                 filterFormItemTypePrefix: null,
+                filterSections: [],
                 dataTransmits: {
-                    filterFormItemTypePrefix: 'filter_form_item_type_prefix'
+                    filterFormItemTypePrefix: 'filter_form_item_type_prefix',
+                    filterSections: 'filter_sections'
                 }
             }
         },
@@ -41,6 +43,26 @@
             },
             deleteUrl(id) {
                 return window.location.origin + window.location.pathname + '/' + id
+            },
+            filterValueUpdated(filterSection, newValue) {
+                if (newValue !== null && typeof newValue !== 'undefined') {
+                    this.$emit('filterRefreshed')
+                }
+                filterSection.data.value = newValue
+            },
+            filterToValueUpdated(filterSection, newValue) {
+                console.log('filterToValue ' + newValue)
+                if (newValue !== null && typeof newValue !== 'undefined') {
+                    this.$emit('filterRefreshed')
+                }
+                filterSection.data.to_value = newValue
+            },
+            filterFromValueUpdated(filterSection, newValue) {
+                console.log('filterFromValue ' + newValue)
+                if (newValue !== null && typeof newValue !== 'undefined') {
+                    this.$emit('filterRefreshed')
+                }
+                filterSection.data.from_value = newValue
             }
         },
         computed: {
@@ -48,15 +70,19 @@
                 return this.column_names.map(function(columnName) {
                     return columnName.toUppercaseFirstLetter().replace('_id', '').replace('_', ' ')
                 })
-            },
-            convertedFilterSections() {
-                return this.filter_sections.map(filterSection => {
-                    return {
-                        type: this.filterFormItemTypePrefix + '-' + filterSection.type,
-                        data: filterSection.data
-                    }
-                })
             }
+        },
+        watch: {
+            filterSections: {
+                immediate: true,
+                handler(newFilterSections) {
+                    if (newFilterSections) {
+                        newFilterSections.forEach((filterSection) => {
+                            filterSection.type = this.filterFormItemTypePrefix + '-' + filterSection.type
+                        })
+                    }
+                }
+            },
         }
     }
 </script>
