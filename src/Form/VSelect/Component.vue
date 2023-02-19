@@ -150,7 +150,8 @@
             this.isEqualOption(op, newVal)
           );
           this.onSelect(newVal, index);
-        }
+        },
+                flush: 'sync'
       }
     },
     methods: {

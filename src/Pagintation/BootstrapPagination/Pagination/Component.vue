@@ -77,7 +77,8 @@
                     this.$nextTick(() => {
                         this.$emit('update:selected_page_number', newSelectedPageNumber)
                     })
-                }
+                },
+                flush: 'sync'
             }
         }
     }

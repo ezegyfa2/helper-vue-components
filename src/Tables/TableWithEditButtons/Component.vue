@@ -81,7 +81,8 @@
                             filterSection.type = this.filterFormItemTypePrefix + '-' + filterSection.type
                         })
                     }
-                }
+                },
+                flush: 'sync'
             },
         }
     }

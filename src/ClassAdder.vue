@@ -26,7 +26,8 @@
                 deep: true,
                 handler(newAddedClasses) {
                     this.$forceUpdate()
-                }
+                },
+                flush: 'sync'
             },
             addedClasses: {
                 immediate: true,

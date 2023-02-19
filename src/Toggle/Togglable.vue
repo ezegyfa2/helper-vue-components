@@ -33,7 +33,8 @@
                     else {
                         this.removeClass('root', 'toggled')
                     }
-                }
+                },
+                flush: 'sync'
             }
         }
     }

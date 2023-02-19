@@ -23,7 +23,8 @@
             data1: {
                 handler(newData1) {
                     this.$emit('update:prop1', newData1)
-                }
+                },
+                flush: 'sync'
             }
         }
     }

@@ -68,7 +68,8 @@
                             this.$emit('update:from_value', parseInt(newFromValue))
                         })
                     }
-                }
+                },
+                flush: 'sync'
             },
             toValue: {
                 immediate: true,
