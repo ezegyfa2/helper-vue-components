@@ -67,7 +67,7 @@
                         this.$nextTick(() => {
                             this.$emit('update:from_value', parseInt(newFromValue))
                         })
-                    }
+                    } 
                 },
                 flush: 'sync'
             },

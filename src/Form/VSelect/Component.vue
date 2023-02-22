@@ -151,7 +151,7 @@
           );
           this.onSelect(newVal, index);
         },
-                flush: 'sync'
+        flush: 'sync'
       }
     },
     methods: {
