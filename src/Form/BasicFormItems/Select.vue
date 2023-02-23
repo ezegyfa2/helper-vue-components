@@ -8,6 +8,9 @@
         props: {
             options: {
                 type: Array
+            },
+            kerek_meret: {
+                type: Number
             }
         },
         computed: {

@@ -7,20 +7,21 @@
         props: {
             params: {
                 type: Array|Object
+            },
+            template_type_name: {
+                type: String
             }
         },
         data() {
             return {
                 configChanged: false,
                 paramChanged: false,
-                mainTemplatePath: {},
-                templates: {},
                 compiledTemplate: {}
             }
         },
         mounted() {
             let templateToCompile = {
-                template_path: this.mainTemplatePath,
+                template_type_name: this.template_type_name,
                 params: this.params
             }
             this.compiledTemplate = this.replaceConfigTemplates(templateToCompile)
@@ -49,7 +50,7 @@
                     })
                 }
                 else if (config && typeof(config) == 'object') {
-                    if ('template_path' in config) {
+                    if ('template_type_name' in config) {
                         return this.replaceTemplate(config, globalParams)
                     }
                     else {
@@ -72,7 +73,7 @@
                         })
                     }
                     else if (typeof(value) == 'object') {
-                        if ('template_path' in value) {
+                        if ('template_type_name' in value) {
                             config[key] = this.replaceTemplate(value, globalParams)
                         }
                         else {
@@ -83,7 +84,7 @@
                 return config
             },
             replaceTemplate(config, globalParams) {
-                let templateConfig = getObjectSubProperty(this.templates, config.template_path)
+                let templateConfig = getObjectSubProperty(window.templates, config.template_type_name)
                 if ('params' in config) {
                     templateConfig = this.replaceTemplateParams(templateConfig, config.params, '++')
                 }
