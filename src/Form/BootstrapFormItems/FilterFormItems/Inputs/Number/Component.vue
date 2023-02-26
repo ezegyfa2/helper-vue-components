@@ -40,17 +40,7 @@
                     return []
                 }
             }
-        },
-        data() {
-            return {
-                fromValue: null,
-                toValue: null,
-                dataTransmits: {
-                    fromValue: 'from_value',
-                    toValue: 'to_value'
-                }
-            }
-        },
+        }
         computed: {
             fromName() {
                 return 'from_' + this.name

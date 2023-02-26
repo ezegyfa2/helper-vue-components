@@ -8,14 +8,9 @@
                 }
             }
         },
-        data() {
-            return {
-                isVisible: true
-            }
-        },
         computed: {
             hiddenClass() {
-                if (this.isVisible && this.is_visible) {
+                if (this.is_visible && this.is_visible) {
                     return ''
                 }
                 else {

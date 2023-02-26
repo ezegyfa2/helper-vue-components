@@ -27,16 +27,6 @@
                 type: String
             }
         },
-        data() {
-            return {
-                filterFormItemTypePrefix: null,
-                filterSections: [],
-                dataTransmits: {
-                    filterFormItemTypePrefix: 'filter_form_item_type_prefix',
-                    filterSections: 'filter_sections'
-                }
-            }
-        },
         computed: {
             convertedColumnNames() {
                 return this.column_names.map(function(columnName) {

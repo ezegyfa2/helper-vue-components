@@ -2,9 +2,9 @@
     table.table.table-bordered(width='100%' cellspacing='0')
         thead
             tr
-                th(v-for='filterSection in filterSections')
+                //th(v-for='filterSection in filter_sections')
                     component(
-                        v-if='filterFormItemTypePrefix'
+                        v-if='filter_form_item_type_prefix'
                         v-bind:key='filterSection.name'
                         v-bind:ref='filterSection.name'
                         v-bind:is='filterSection.type'
