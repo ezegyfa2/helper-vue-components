@@ -63,18 +63,20 @@
             fromValue: {
                 immediate: true,
                 handler(newFromValue) {
-                    if (typeof newFromValue !== 'undefined' && newFromValue !== null) {
+                    console.log(newFromValue)
+                    if (typeof newFromValue !== 'undefined' && newFromValue !== null && newFromValue !== '') {
                         this.$nextTick(() => {
                             this.$emit('update:from_value', parseInt(newFromValue))
                         })
-                    } 
+                    }
                 },
                 flush: 'sync'
             },
             toValue: {
                 immediate: true,
                 handler(newToValue) {
-                    if (typeof newToValue !== 'undefined' && newToValue !== null) {
+                    console.log(newToValue)
+                    if (typeof newToValue !== 'undefined' && newToValue !== null && newToValue !== '') {
                         this.$nextTick(() => {
                             this.$emit('update:to_value', parseInt(newToValue))
                         })

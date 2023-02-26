@@ -2,8 +2,7 @@ form-item-with-validation-errors(v-bind:validation_errors='validation_errors')
     input.form-item-control(
         v-bind:name='name'
         v-bind:placeholder='placeholder'
-        v-bind:value='value'
-        @change='changeValue'
+        v-model='currentValue'
         v-bind:required='required'
         type='text'
         v-bind:minlength='minlength'
