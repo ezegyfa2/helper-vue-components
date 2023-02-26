@@ -21,16 +21,7 @@
                 default: true
             }
         }, 
-        data() {
-            return {
-                selectedPageNumber: 0,
-                pageCount: 3,
-                dataTransmits: {
-                    pageCount: 'page_count',
-                    selectedPageNumber: 'selected_page_number'
-                },
-            }
-        },
+
         computed: {
             itemClass() {
                 if (this.is_selected) {
@@ -44,18 +35,18 @@
                 }
             },
             isNextSelectable() {
-                return this.selectedPageNumber < this.page_count
+                return this.selected_page_number < this.page_count
             },
             isPreviousSelectable() {
-                return this.selectedPageNumber > 1
+                return this.selected_page_number > 1
             },
             hasValidParams() {
-                return Number.isInteger(this.pageCount) && Number.isInteger(this.selectedPageNumber)
+                return Number.isInteger(this.page_count) && Number.isInteger(this.selected_page_number)
             }
         },
         methods: {
             isSelected(pageNumber) {
-                return pageNumber == this.selectedPageNumber
+                return pageNumber == this.selected_page_number
             },
             getUrl(pageNumber) {
                 if (this.url_enabled) {
@@ -68,17 +59,8 @@
                 }
             },
             selectPage(pageNumber) {
-                this.selectedPageNumber = pageNumber
-            }
-        },
-        watch: {
-            selectedPageNumber: {
-                handler(newSelectedPageNumber) {
-                    this.$nextTick(() => {
-                        this.$emit('update:selected_page_number', newSelectedPageNumber)
-                    })
-                },
-                flush: 'sync'
+                this.$emit('update:selected_page_number', pageNumber)
+
             }
         }
     }

@@ -40,46 +40,13 @@
                     return []
                 }
             }
-        },
-        data() {
-            return {
-                fromValue: null,
-                toValue: null,
-                dataTransmits: {
-                    fromValue: 'from_value',
-                    toValue: 'to_value'
-                }
-            }
-        },
+        }
         computed: {
             fromName() {
                 return 'from_' + this.name
             },
             toName() {
                 return 'to_' + this.name
-            }
-        },
-        watch: {
-            fromValue: {
-                immediate: true,
-                handler(newFromValue) {
-                    if (typeof newFromValue !== 'undefined' && newFromValue !== null) {
-                        this.$nextTick(() => {
-                            this.$emit('update:from_value', parseInt(newFromValue))
-                        })
-                    }
-                },
-                flush: 'sync'
-            },
-            toValue: {
-                immediate: true,
-                handler(newToValue) {
-                    if (typeof newToValue !== 'undefined' && newToValue !== null) {
-                        this.$nextTick(() => {
-                            this.$emit('update:to_value', parseInt(newToValue))
-                        })
-                    }
-                }
             }
         }
     }
