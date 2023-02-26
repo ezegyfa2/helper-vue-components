@@ -3,6 +3,7 @@ form-item-with-validation-errors(v-bind:validation_errors='validation_errors')
         v-bind:name='name'
         v-bind:required='required'
         v-bind:options='options'
-        v-bind:value.sync='currentValue'
+        v-bind:value='value'
+        v-on:update:value='changeValue'
         v-bind:class='invalidClass'
     )

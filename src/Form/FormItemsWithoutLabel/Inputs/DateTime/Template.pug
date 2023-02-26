@@ -1,7 +1,8 @@
 form-item-with-validation-errors(v-bind:validation_errors='validation_errors')
     input.form-item-control(
         v-bind:name='name'
-        v-model='currentValue'
+        v-bind:value='value'
+        @change='changeValue'
         v-bind:required='required'
         type='datetime-local'
         v-bind:min='min'

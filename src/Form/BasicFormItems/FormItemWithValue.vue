@@ -9,6 +9,11 @@
         ],
         props: {
             value: {},
+        },
+        methods: {
+            changeValue(newValue) {
+                this.$emit('update:value', newValue)
+            }
         }
     }
 </script>

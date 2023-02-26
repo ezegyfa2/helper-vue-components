@@ -4,7 +4,8 @@ form-item-with-label(
 )
     textarea.form-item-control(
         v-bind:name='name'
-        v-model='currentValue'
+        v-bind:value='value'
+        @change='changeValue'
         v-bind:required='required'
         v-bind:placeholder='placeholder'
         v-bind:minlength='minlength'
