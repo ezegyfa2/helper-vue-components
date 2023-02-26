@@ -40,7 +40,7 @@
                     return []
                 }
             }
-        }
+        },
         computed: {
             fromName() {
                 return 'from_' + this.name
@@ -50,7 +50,7 @@
             }
         },
         watch: {
-            fromValue: {
+            from_value: {
                 immediate: true,
                 handler(newFromValue) {
                     console.log(newFromValue)
@@ -62,7 +62,7 @@
                 },
                 flush: 'sync'
             },
-            toValue: {
+            to_value: {
                 immediate: true,
                 handler(newToValue) {
                     console.log(newToValue)

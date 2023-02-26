@@ -24,7 +24,8 @@
                 type: Array
             },
             filter_form_item_type_prefix: {
-                type: String
+                type: String,
+                default: 'bootstrap'
             }
         },
         computed: {
@@ -35,12 +36,12 @@
             }
         },
         watch: {
-            filterSections: {
+            filter_sections: {
                 immediate: true,
                 handler(newFilterSections) {
                     if (newFilterSections) {
                         newFilterSections.forEach((filterSection) => {
-                            filterSection.type = this.filterFormItemTypePrefix + '-' + filterSection.type
+                            filterSection.type = this.filter_form_item_type_prefix + '-' + filterSection.type
                         })
                     }
                 },
