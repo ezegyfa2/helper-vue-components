@@ -5,11 +5,14 @@
         mixins: [
             ClassAdder,
         ],
-        data() {
-            return {
-                addedClasses: {
-                    'root': 'form-group',
-                    '.form-item-control': 'form-control'
+        props: {
+            added_classes: {
+                type: Object,
+                default () {
+                    return {
+                        'root': 'form-group',
+                        '.form-item-control': 'form-control'
+                    }
                 }
             }
         }

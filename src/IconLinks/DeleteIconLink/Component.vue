@@ -11,14 +11,15 @@
                 default: 'fas fa-trash'
             }
         },
-        data() {
-            return {
-                addedClasses: {
-                    root: [
-                        'mx-2',
-                        'btn'
-                    ]
-                }
+            added_classes: {
+                type: Object,
+                    default () {
+                        return {
+                            root: [
+                                'mx-2',
+                                'btn'
+                            ]
+                        }
             }
         }
     }

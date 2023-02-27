@@ -5,11 +5,14 @@
         mixins: [
             ClassAdder,
         ],
-        data() {
-            return {
-                addedClasses: {
-                    'root': 'form-group',
-                    'select': 'selectpicker'
+        props: {
+            added_classes: {
+                type: Object,
+                default () {
+                    return {
+                        'root': 'form-group',
+                        'select': 'selectpicker'
+                    }
                 }
             }
         }

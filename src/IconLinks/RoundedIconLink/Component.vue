@@ -5,10 +5,13 @@
         mixins: [
             IconLink
         ],
-        data() {
-            return {
-                addedClasses: {
-                    root: 'mx-2'
+        props: {
+            added_classes: {
+                type: Object,
+                default () {
+                    return {
+                        root: 'mx-2'
+                    }
                 }
             }
         }

@@ -9,19 +9,19 @@
             icon_class: {
                 type: String,
                 default: 'fas fa-pen'
-            }
-        },
-        data() {
-            return {
-                addedClasses: {
-                    root: [
-                        'mx-2',
-                        'btn'
-                    ]
+            },
+            added_classes:
+                type: Object,
+                default () {
+                    return {
+                        root: [
+                            'mx-2',
+                            'btn'
+                        ]
+                    }
                 }
-            }
+            }   
         }
-    }
 </script>
 
 <style lang="scss" scoped>
