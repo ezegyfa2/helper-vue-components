@@ -2,8 +2,7 @@
     input.form-check-input(
         v-bind:name='name'
         v-bind:placeholder='placeholder'
-        v-bind:value='value'
-        @change='changeValue'
+        v-model='currentValue'
         v-bind:required='required'
         v-bind:class='invalidClass'
         v-bind:id='formItemId'

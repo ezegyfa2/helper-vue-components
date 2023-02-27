@@ -7,11 +7,9 @@
         },
         mounted() {
             this.addClassesToItemsByQueries(this.added_classes)
-            this.addClassesToItemsByQueries(this.added_classes)
         },
         updated() {
             this.$nextTick(function () {
-                this.addClassesToItemsByQueries(this.added_classes)
                 this.addClassesToItemsByQueries(this.added_classes)
             })
         },
@@ -31,7 +29,6 @@
                 }
                 else {
                     this.$emit('update:added_classes', classes)
-
                 }
                 this.$emit('update:added_classes', JSON.parse(JSON.stringify(this.added_classes)) )
             },

@@ -24,8 +24,29 @@
                 type: Array
             },
             filter_form_item_type_prefix: {
-                type: String
+                type: String,
+                default: 'bootstrap'
             }
+        },
+        computed: {
+            convertedColumnNames() {
+                return this.column_names.map(function(columnName) {
+                    return columnName.toUppercaseFirstLetter().replace('_id', '').replace('_', ' ')
+                })
+            }
+        },
+        watch: {
+            filter_sections: {
+                immediate: true,
+                handler(newFilterSections) {
+                    if (newFilterSections) {
+                        newFilterSections.forEach((filterSection) => {
+                            filterSection.type = this.filter_form_item_type_prefix + '-' + filterSection.type
+                        })
+                    }
+                },
+                flush: 'sync'
+            },
         },
         methods: {
             editUrl(id) {
@@ -35,31 +56,22 @@
                 return window.location.origin + window.location.pathname + '/' + id
             },
             filterValueUpdated(filterSection, newValue) {
-                if (newValue !== null && typeof newValue !== 'undefined') {
-                    this.$emit('filterRefreshed')
-                }
                 filterSection.data.value = newValue
+                if (newValue !== null && typeof newValue !== 'undefined') {
+                    this.$emit('update:filter_sections')
+                }
             },
             filterToValueUpdated(filterSection, newValue) {
-                console.log('filterToValue ' + newValue)
-                if (newValue !== null && typeof newValue !== 'undefined') {
-                    this.$emit('filterRefreshed')
-                }
                 filterSection.data.to_value = newValue
+                if (newValue !== null && typeof newValue !== 'undefined') {
+                    this.$emit('update:filter_sections')
+                }
             },
             filterFromValueUpdated(filterSection, newValue) {
-                console.log('filterFromValue ' + newValue)
-                if (newValue !== null && typeof newValue !== 'undefined') {
-                    this.$emit('filterRefreshed')
-                }
                 filterSection.data.from_value = newValue
-            }
-        },
-        computed: {
-            convertedColumnNames() {
-                return this.column_names.map(function(columnName) {
-                    return columnName.toUppercaseFirstLetter().replace('_id', '').replace('_', ' ')
-                })
+                if (newValue !== null && typeof newValue !== 'undefined') {
+                    this.$emit('update:filter_sections')
+                }
             }
         }
     }

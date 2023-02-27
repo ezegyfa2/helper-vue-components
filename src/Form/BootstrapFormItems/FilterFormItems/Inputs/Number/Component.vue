@@ -40,13 +40,38 @@
                     return []
                 }
             }
-        }
+        },
         computed: {
             fromName() {
                 return 'from_' + this.name
             },
             toName() {
                 return 'to_' + this.name
+            }
+        },
+        watch: {
+            from_value: {
+                immediate: true,
+                handler(newFromValue) {
+                    console.log(newFromValue)
+                    if (typeof newFromValue !== 'undefined' && newFromValue !== null && newFromValue !== '') {
+                        this.$nextTick(() => {
+                            this.$emit('update:from_value', parseInt(newFromValue))
+                        })
+                    }
+                },
+                flush: 'sync'
+            },
+            to_value: {
+                immediate: true,
+                handler(newToValue) {
+                    console.log(newToValue)
+                    if (typeof newToValue !== 'undefined' && newToValue !== null && newToValue !== '') {
+                        this.$nextTick(() => {
+                            this.$emit('update:to_value', parseInt(newToValue))
+                        })
+                    }
+                }
             }
         }
     }

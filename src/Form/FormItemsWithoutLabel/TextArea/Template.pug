@@ -1,8 +1,7 @@
 form-item-with-validation-errors(v-bind:validation_errors='validation_errors')
     textarea.form-item-control(
         v-bind:name='name'
-        v-bind:value='value'
-        @change='changeValue'
+        v-model='currentValue'
         v-bind:required='required'
         v-bind:placeholder='placeholder'
         v-bind:minlength='minlength'
