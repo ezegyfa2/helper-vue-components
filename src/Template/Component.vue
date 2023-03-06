@@ -90,6 +90,7 @@
                 }
                 if (globalParams) {
                     templateConfig = this.replaceTemplateParams(templateConfig, globalParams, '-++')
+                    templateConfig = this.replaceTemplateParams(templateConfig, globalParams, '--')
                 }
                 this.configChanged = true
                 return templateConfig

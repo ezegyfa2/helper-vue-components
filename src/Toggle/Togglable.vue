@@ -15,7 +15,7 @@
         },
         computed: {
             toggledClass() {
-                if (this.isToggled) {
+                if (this.toggled) {
                     return 'toggled'
                 }
                 else {
