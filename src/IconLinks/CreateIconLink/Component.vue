@@ -5,13 +5,16 @@
         mixins: [
             IconLink
         ],
-        data() {
-            return {
-                addedClasses: {
-                    root: [
-                        'btn',
-                        'btn-success'
-                    ]
+        props: {
+            added_classes: {
+                type: Object,
+                default () {
+                    return {
+                        root: [
+                            'btn',
+                            'btn-success'
+                        ]
+                    }
                 }
             }
         }

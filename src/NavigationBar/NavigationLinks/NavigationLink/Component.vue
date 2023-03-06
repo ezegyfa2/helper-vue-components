@@ -9,19 +9,20 @@
         mixins: [
             ClassAdder
         ],
-        data() {
-            return {
-                addedClasses: {
-                    'li': 'text-uppercase'
-                }
-            }
-        },
         props: {
             content: {
                 type: String
             },
             url: {
                 type: String
+            },
+            added_classes: {
+                type: Object,
+                default () {
+                    return {
+                        'li': 'text-uppercase'
+                    }
+                }
             }
         }
     }

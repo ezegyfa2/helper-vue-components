@@ -8,7 +8,7 @@
         props: {
             added_classes: {
                 type: Object,
-                default() {
+                default () {
                     return {
                         'root': 'form-group',
                         '.form-item-control': 'form-control'
