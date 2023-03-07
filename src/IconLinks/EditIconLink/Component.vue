@@ -10,7 +10,7 @@
                 type: String,
                 default: 'fas fa-pen'
             },
-            added_classes:
+            added_classes: {
                 type: Object,
                 default () {
                     return {
@@ -22,6 +22,7 @@
                 }
             }   
         }
+    }
 </script>
 
 <style lang="scss" scoped>
