@@ -36,18 +36,16 @@
             }
         },
         methods: {
-            convertFormItemSections(formItemSections) {
-                let self = this
-                return formItemSections.map(function (formItem) {
-                    let convertedFormItem = clone(formItem)
-                    if (self.formItemTypePrefix) {
-                        convertedFormItem.type = self.formItemTypePrefix + '-' + formItem.type
-                    }
-                    else if (self.formItemConvertTypes[formItem.type]) {
-                        convertedFormItem.type = self.formItemConvertTypes[formItem.type]
-                    }
-                    return convertedFormItem
-                })
+            getConvertedType(formItemType) {
+                if (this.formItemTypePrefix) {
+                    return this.formItemTypePrefix + '-' + formItemType
+                }
+                else if (this.formItemConvertTypes[formItem.type]) {
+                    return this.formItemConvertTypes[formItemType]
+                }
+                else {
+                    return formItemType
+                }
             },
             submitForm (e) {
                 this.submitted = true

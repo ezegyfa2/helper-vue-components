@@ -231,6 +231,18 @@ export default {
 			'helper-vue-components/Form/Form/Component.vue'
         )
         registerVueComponent(
+            'multi-page-form',
+            require('./Form/MultiPageForm/Component.vue').default,
+            Vue,
+			'helper-vue-components/Form/MultiPageForm/Component.vue'
+        )
+        registerVueComponent(
+            'bootstrap-multi-page-form',
+            require('./Form/BootstrapMultiPageForm/Component.vue').default,
+            Vue,
+			'helper-vue-components/Form/BootstrapMultiPageForm/Component.vue'
+        )
+        registerVueComponent(
             'bootstrap-form',
             require('./Form/BootstrapForm/Component.vue').default,
             Vue,

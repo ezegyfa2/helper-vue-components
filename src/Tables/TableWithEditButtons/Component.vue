@@ -58,19 +58,19 @@
             filterValueUpdated(filterSection, newValue) {
                 filterSection.data.value = newValue
                 if (newValue !== null && typeof newValue !== 'undefined') {
-                    this.$emit('update:filter_sections')
+                    this.$emit('update:filter_sections', this.filter_sections)
                 }
             },
             filterToValueUpdated(filterSection, newValue) {
                 filterSection.data.to_value = newValue
                 if (newValue !== null && typeof newValue !== 'undefined') {
-                    this.$emit('update:filter_sections')
+                    this.$emit('update:filter_sections', this.filter_sections)
                 }
             },
             filterFromValueUpdated(filterSection, newValue) {
                 filterSection.data.from_value = newValue
                 if (newValue !== null && typeof newValue !== 'undefined') {
-                    this.$emit('update:filter_sections')
+                    this.$emit('update:filter_sections', this.filter_sections)
                 }
             }
         }

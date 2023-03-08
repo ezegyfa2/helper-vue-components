@@ -1,5 +1,6 @@
 form-item-with-validation-errors(v-bind:validation_errors='validation_errors')
     vue-select.form-item-control(
+        ref='inputElement'
         v-bind:name='name'
         v-bind:required='required'
         v-bind:options='options'
