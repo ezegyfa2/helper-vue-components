@@ -35,6 +35,9 @@
                 }
                 else if (this.currentPageNumber < this.form_item_sections.length - 1) {
                     ++this.currentPageNumber
+                    if (this.onNextPage) {
+                        this.onNextPage()
+                    }
                 }
             },
             getInvalidFormSection() {

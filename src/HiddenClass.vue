@@ -1,16 +1,13 @@
 <script>
     export default {
-        props: {
-            is_visible: {
-                type: Boolean,
-                default() {
-                    return true
-                }
+        data() {
+            return {
+                isVisible: true
             }
         },
         computed: {
             hiddenClass() {
-                if (this.is_visible && this.is_visible) {
+                if (this.isVisible) {
                     return ''
                 }
                 else {

@@ -14,7 +14,3 @@
         }
     }
 </script>
-
-<style lang="scss" scoped>
-    @import "Style.scss";
-</style>

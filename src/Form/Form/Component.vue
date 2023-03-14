@@ -47,6 +47,14 @@
                     return formItemType
                 }
             },
+            getRequestData(formItemSections) {
+                let data = {}
+                formItemSections.forEach(formItemSection => {
+                    data[formItemSection.data.name] = formItemSection.data.value
+                })
+                data._token = document.querySelector('meta[name="csrf-token"]').content
+                return data
+            },
             submitForm (e) {
                 this.submitted = true
                 return true
