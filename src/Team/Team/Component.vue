@@ -10,6 +10,9 @@
             },
             member_sections: {
                 type: Array
+            },
+            footer_text: {
+                type: String
             }
         }
     }
