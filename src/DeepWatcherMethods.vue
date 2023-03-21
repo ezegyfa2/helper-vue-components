@@ -3,13 +3,9 @@
         methods: {
             //Only work with reference to property to change
             changeDeepData(propertyToChange, deepPropertyName, deepPropertyValue) {
-                console.log(propertyToChange)
-                console.log(deepPropertyName)
-                console.log(deepPropertyValue)
                 if (propertyToChange && propertyToChange.data) {
                     propertyToChange.data[deepPropertyName] = deepPropertyValue
                 }
-                console.log('asd')
             },
             initDeepWatcher(watcherName, handler) {
                 let self = this

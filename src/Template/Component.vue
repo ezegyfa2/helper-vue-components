@@ -37,7 +37,6 @@
                 do {
                     this.configChanged = false
                     config = this.replaceUpperConfigTemplates(config, globalParams)
-                    console.log(config)
                 }
                 while (this.configChanged)
                 return config

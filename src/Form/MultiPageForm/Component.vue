@@ -34,10 +34,12 @@
                     invalidHtmlElement.reportValidity()
                 }
                 else if (this.currentPageNumber < this.form_item_sections.length - 1) {
-                    ++this.currentPageNumber
-                    if (this.onNextPage) {
-                        this.onNextPage()
-                    }
+                    setTimeout(() => {
+                        ++this.currentPageNumber
+                        if (this.onNextPage) {
+                            this.onNextPage()
+                        }
+                    }, 100)
                 }
             },
             getInvalidFormSection() {
@@ -52,6 +54,14 @@
             back() {
                 if (this.currentPageNumber > 0) {
                     --this.currentPageNumber
+                }
+            },
+            getHiddenStyle(formItemSections) {
+                if (formItemSections == this.form_item_sections[this.currentPageNumber]) {
+                    return ''
+                }
+                else {
+                    return 'display: none'
                 }
             }
         }

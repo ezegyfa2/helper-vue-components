@@ -3,8 +3,6 @@
 </template>
 
 <script>
-    import clone from 'just-clone'
-
     export default {
         props: {
             url: {

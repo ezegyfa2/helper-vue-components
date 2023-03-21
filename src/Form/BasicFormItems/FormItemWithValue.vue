@@ -14,11 +14,6 @@
                 currentValueChanges: []
             }
         },
-        mounted() {
-            if (this.value == null) {
-                this.$emit('update:value', '')
-            }
-        },
         watch: {
             value: {
                 immediate: true,
