@@ -1,0 +1,20 @@
+div
+    div(:class='cClass')
+        .cart-menu
+            h1.text-center {{ title }}
+            hr
+            transition(name='fade')
+                .text-center.font-italic(v-if='this.cartContent.length === 0')
+                    | {{ empty_message }}
+            transition-group(name='fade')
+                dynamic-component(
+                    v-for='itemSection in item_sections' v-bind:key='itemSection.id'
+                    v-bind:component_infos='itemSection'
+                )
+            hr(v-if='this.cartContent.length !== 0')
+            .row.justify-content-between.background(v-if='this.cartPrice != undefined')
+                .flex-column.pl-3
+                    h4 {{ total_text }}
+                .flex-column.pr-3
+                    h4 ${{ cartPrice }}
+    div(:class='modalClass' @click='cartON')
