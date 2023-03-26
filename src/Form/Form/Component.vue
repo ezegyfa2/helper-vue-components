@@ -38,7 +38,7 @@
         methods: {
             convertFormItemSections(formItemSections) {
                 let self = this
-                return formItemSections.map(function (formItem) {
+                return formItemSections.map((formItem) => {
                     let convertedFormItem = clone(formItem)
                     if (self.formItemTypePrefix) {
                         convertedFormItem.type = self.formItemTypePrefix + '-' + formItem.type

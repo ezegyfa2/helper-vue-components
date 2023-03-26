@@ -32,7 +32,7 @@
             }
         },
         mounted() {
-            var navbarShrink = function () {
+            var navbarShrink =  () => {
                 const navbarCollapsible = document.body.querySelector('nav.navbar');
                 if (!navbarCollapsible) {
                     return
@@ -55,7 +55,7 @@
             const responsiveNavItems = [].slice.call(
                 document.querySelectorAll('.nav-link')
             )
-            responsiveNavItems.map(function (responsiveNavItem) {
+            responsiveNavItems.map( (responsiveNavItem) => {
                 responsiveNavItem.addEventListener('click', (e) => {
                     if (window.getComputedStyle(navbarToggler).display !== 'none' && !e.target.classList.contains('dropdown-toggle')) {
                         navbarToggler.click();

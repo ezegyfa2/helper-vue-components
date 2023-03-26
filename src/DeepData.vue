@@ -13,13 +13,13 @@
         mounted() {
             let self = this
             for (const [deepPropertyName, subDataNames] of Object.entries(this.deepProperties)) {
-                //subDataNames.forEach(function (subDataName) { 
+                //subDataNames.forEach((subDataName) => { 
                 for (const [subObjectName, subObjectPropertyName] of Object.entries(self.getSubDataNamesObject(subDataNames, deepPropertyName))) {
-                    self.initDeepWatcher(subObjectName, function (newSubObjectValue) {
+                    self.initDeepWatcher(subObjectName, (newSubObjectValue) =>  {
                         if (Array.isArray(newSubObjectValue)) {
                             let subDataArray = self[subObjectName]
                             let hasChages = false
-                            subDataArray.forEach(function (subData) {
+                            subDataArray.forEach((subData) => {
                                 if (subData && subData.data && subData.data[subObjectPropertyName] != self[deepPropertyName]) {
                                     self.refreshDeepData(subData, subObjectPropertyName, self[deepPropertyName])
                                     hasChages = true
@@ -37,13 +37,13 @@
                         }
                     })
                 }
-                self.initDeepWatcher(deepPropertyName, function (newDeepPropertyValue) {
-                    //subDataNames.forEach(function (subDataName) {
+                self.initDeepWatcher(deepPropertyName, (newDeepPropertyValue) => {
+                    //subDataNames.forEach((subDataName) => {
                     for (const [subObjectName, subObjectPropertyName] of Object.entries(self.getSubDataNamesObject(subDataNames, deepPropertyName))) {
                         if (Array.isArray(self[subObjectName])) {
                             let subDataArray = self[subObjectName]
                             let hasChages = false
-                            subDataArray.forEach(function (subData) {
+                            subDataArray.forEach((subData) => {
                                 if (subData && subData.data && subData.data[subObjectPropertyName] != self[deepPropertyName]) {
                                     self.refreshDeepData(subData, subObjectPropertyName, newDeepPropertyValue)
                                     hasChages = true
@@ -68,7 +68,7 @@
             getSubDataNamesObject(subDataNames, deepPropertyName) {
                 if (Array.isArray(subDataNames)) {
                     let subDataNamesObject = {}
-                    subDataNames.forEach(function(subDataName) {
+                    subDataNames.forEach((subDataName) => {
                         subDataNamesObject[subDataName] = deepPropertyName
                     })
                     return subDataNamesObject

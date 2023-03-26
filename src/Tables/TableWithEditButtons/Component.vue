@@ -67,7 +67,7 @@
         },
         computed: {
             convertedColumnNames() {
-                return this.column_names.map(function(columnName) {
+                return this.column_names.map((columnName) => {
                     return columnName.toUppercaseFirstLetter().replace('_id', '').replace('_', ' ')
                 })
             }

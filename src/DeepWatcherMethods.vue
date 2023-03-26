@@ -9,7 +9,7 @@
             },
             initDeepWatcher(watcherName, handler) {
                 let self = this
-                this.$watch(watcherName, function(newValue, oldValue) {
+                this.$watch(watcherName, (newValue, oldValue) => {
                     if (typeof newValue !== 'undefined') {
                         handler(newValue, oldValue)
                     }

@@ -9,7 +9,7 @@
             this.initToggler()
         },
         updated() {
-            this.$nextTick(function () {
+            this.$nextTick( () => {
                 this.initToggler()
             })
         },
@@ -28,7 +28,7 @@
                 let registeredEventsOnToggler = jQuery._data($(this.$refs.toggler)[0], "events")
                 if (registeredEventsOnToggler && 'click' in registeredEventsOnToggler) {
                     let self = this
-                    let registeredToggleEvents = registeredEventsOnToggler.click.filter(function (event) {
+                    let registeredToggleEvents = registeredEventsOnToggler.click.filter( (event) => {
                         return event.origType == 'click' && event.handler == self.toggle
                     })
                     return registeredToggleEvents.length > 0

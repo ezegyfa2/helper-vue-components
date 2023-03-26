@@ -15,7 +15,7 @@
             this.addClassesToItemsByQueries(this.addedClasses)
         },
         updated() {
-            this.$nextTick(function () {
+            this.$nextTick(() => {
                 this.addClassesToItemsByQueries(this.added_classes)
                 this.addClassesToItemsByQueries(this.addedClasses)
             })
@@ -61,12 +61,12 @@
                 this.removeClassFromItemsByQuery(query, classToRemove)
                 if (this.addedClasses && this.addedClasses[query]) {
                     if (Array.isArray(this.addedClasses[query])) {
-                        this.addedClasses[query] = this.addedClasses[query].filter(function (currentClass) {
+                        this.addedClasses[query] = this.addedClasses[query].filter((currentClass) => {
                             return currentClass != classToRemove
                         })
                     }
                     else if (this.addedClasses[query] == classToRemove) {
-                        this.addedClasses.filter(function (currentClass) {
+                        this.addedClasses.filter((currentClass) => {
                             return currentClass != classToRemove
                         })
                     }
@@ -103,13 +103,13 @@
             addClassesToItems(items, appendClasses) {
                 if (Array.isArray(appendClasses)) {
                     let self = this
-                    appendClasses.forEach(function (appendClass) {
+                    appendClasses.forEach((appendClass) => {
                         self.addClassesToItems(items, appendClass)
                     })
                 }
                 else {
                     if (NodeList.prototype.isPrototypeOf(items)) {
-                        items.forEach(function(item) {
+                        items.forEach((item) => {
                             if (!item.classList.contains(appendClasses)) {
                                 item.classList.add(appendClasses)
                             }

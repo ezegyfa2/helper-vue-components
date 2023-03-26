@@ -17,7 +17,7 @@
         },
         mounted() {
             let self = this
-            setTimeout(function() {
+            setTimeout(() => {
                 self.close()
             }, 5000)
         },
