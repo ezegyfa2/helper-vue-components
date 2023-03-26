@@ -2,7 +2,7 @@
     export default {
         methods: {
             //Only work with reference to property to change
-            refreshDeepData(propertyToChange, deepPropertyName, deepPropertyValue) {
+            changeDeepData(propertyToChange, deepPropertyName, deepPropertyValue) {
                 if (propertyToChange && propertyToChange.data) {
                     propertyToChange.data[deepPropertyName] = deepPropertyValue
                 }
@@ -19,6 +19,17 @@
                     deep: true,
                     flush: 'sync'
                 })
+            },
+            refreshDataValue(subObjectName) {
+                this.changeDataValue(subObjectName, this[subObjectName])
+            },
+            changeDataValue(dataName, newValue) {
+                if (this.$options.propsData[dataName]) {
+                    this.$emit('update:' + dataName, newValue)
+                }
+                else {
+                    this[dataName] = Object.assign({}, newValue)
+                }
             }
         }
     }

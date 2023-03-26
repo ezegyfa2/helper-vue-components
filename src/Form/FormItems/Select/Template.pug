@@ -4,10 +4,12 @@ form-item-with-label(
 )
     vue-select(
         data-width="100%"
+        ref='inputElement'
         v-bind:name='name'
         v-bind:required='required'
         v-bind:options='options'
-        v-bind:value.sync='currentValue'
+        v-bind:value='value'
+        v-on:update:value='(newValue) => { this.$emit("update:value", newValue) }'
         v-bind:class='invalidClass'
         v-bind:id='formItemId'
     )

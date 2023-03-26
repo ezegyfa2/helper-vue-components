@@ -5,68 +5,44 @@
                 type: Object
             }
         },
-        data() {
-            return {
-                addedClasses: {}
-            }
-        },
         mounted() {
             this.addClassesToItemsByQueries(this.added_classes)
-            this.addClassesToItemsByQueries(this.addedClasses)
         },
         updated() {
             this.$nextTick(() => {
                 this.addClassesToItemsByQueries(this.added_classes)
-                this.addClassesToItemsByQueries(this.addedClasses)
             })
-        },
-        watch: {
-            added_classes: {
-                immediate: true,
-                deep: true,
-                handler(newAddedClasses) {
-                    this.$forceUpdate()
-                },
-                flush: 'sync'
-            },
-            addedClasses: {
-                immediate: true,
-                deep: true,
-                handler(newAddedClasses) {
-                    this.addedClasses = newAddedClasses
-                    this.$forceUpdate()
-                }
-            }
         },
         methods: {
             addClass(query, classes) {
                 if (!Array.isArray(classes)) {
                     classes = [ classes ]
                 }
-                if (!this.addedClasses) {
-                    this.addedClasses = {}
+                if (!this.added_classes) {
+                    this.$emit('update:added_classes', {})
                 }
-                if (this.addedClasses[query]) {
-                    if (!Array.isArray(this.addedClasses[query])) {
-                        this.addedClasses[query] = [ this.addedClasses[query] ]
+                if (this.added_classes[query]) {
+                    if (!Array.isArray(this.added_classes[query])) {
+                        this.$emit('update:added_classes', [ this.added_classes[query] ])
                     }
-                    this.addedClasses[query] = this.addedClasses[query].concat(classes)
+                    this.$emit('update:added_classes', this.added_classes[query].concat(classes) )
                 }
                 else {
-                    this.addedClasses[query] = classes
+                    this.$emit('update:added_classes', classes)
                 }
-                this.addedClasses = JSON.parse(JSON.stringify(this.addedClasses))
+                this.$emit('update:added_classes', JSON.parse(JSON.stringify(this.added_classes)) )
             },
             removeClass(query, classToRemove) {
                 this.removeClassFromItemsByQuery(query, classToRemove)
-                if (this.addedClasses && this.addedClasses[query]) {
-                    if (Array.isArray(this.addedClasses[query])) {
-                        this.addedClasses[query] = this.addedClasses[query].filter((currentClass) => {
+                if (this.added_classes && this.added_classes[query]) {
+                    if (Array.isArray(this.added_classes[query])) {
+                        this.added_classes[query] = this.added_classes[query].filter(function (currentClass)
+                        {
                             return currentClass != classToRemove
                         })
                     }
-                    else if (this.addedClasses[query] == classToRemove) {
-                        this.addedClasses.filter((currentClass) => {
+                    else if (this.added_classes[query] == classToRemove) {
+                        this.added_classes.filter(function (currentClass) {
                             return currentClass != classToRemove
                         })
                     }

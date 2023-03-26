@@ -1,0 +1,14 @@
+li
+    .line(v-if='with_line')
+    .timeline-panel.left-content(v-bind:class='leftContentClass')
+        dynamic-component(
+            v-for='content_section in content_sections'
+            v-bind:component_infos='content_section'
+        )
+    .timeline-image
+        img.rounded-circle.img-fluid(v-bind:src='image_url' alt='image_alt')
+    .timeline-panel.right-content(v-bind:class='rightContentClass')
+        dynamic-component(
+            v-for='content_section in content_sections'
+            v-bind:component_infos='content_section'
+        )

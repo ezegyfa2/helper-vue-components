@@ -14,13 +14,9 @@
         },
         data() {
             return {
-                dropdownSection: {},
-                dataTransmits: {
-                    'dropdownSection': 'dropdown_section'
-                },
                 deepProperties: {
                     'dropdownLinkId': {
-                        'dropdownSection': 'dropdown_link_id'
+                        'dropdown_section': 'dropdown_link_id'
                     }
                 }
             }

@@ -18,18 +18,20 @@
             },
             links: {
                 type: Array
-            }
-        },
-        data() {
-            return {
-                addedClasses: {
-                    'ul.navbar-nav': [
-                        'ms-auto',
-                        'py-4',
-                        'py-lg-0',
-                    ]
+            },
+            added_classes: {
+                type: Object,
+                default () {
+                    return {
+                        'ul.navbar-nav': [
+                            'ms-auto',
+                            'py-4',
+                            'py-lg-0',
+                        ]
+                    }
                 }
             }
+            
         },
         mounted() {
             var navbarShrink =  () => {
@@ -70,3 +72,7 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    @import "Style.scss";
+</style>

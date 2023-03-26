@@ -23,10 +23,10 @@
                 type: String
             },
             from_value: {
-                type: Number
+                type: String|Number
             },
             to_value: {
-                type: Number
+                type: String|Number
             },
             from_validation_errors: {
                 type: Array,
@@ -41,16 +41,6 @@
                 }
             }
         },
-        data() {
-            return {
-                fromValue: null,
-                toValue: null,
-                dataTransmits: {
-                    fromValue: 'from_value',
-                    toValue: 'to_value'
-                }
-            }
-        },
         computed: {
             fromName() {
                 return 'from_' + this.name
@@ -59,26 +49,19 @@
                 return 'to_' + this.name
             }
         },
-        watch: {
-            fromValue: {
-                immediate: true,
-                handler(newFromValue) {
-                    if (typeof newFromValue !== 'undefined' && newFromValue !== null) {
-                        this.$nextTick(() => {
-                            this.$emit('update:from_value', parseInt(newFromValue))
-                        })
-                    } 
-                },
-                flush: 'sync'
+        methods: {
+            changeFromValue(newFromValue) {
+                if (typeof newFromValue !== 'undefined' && newFromValue !== null && newFromValue !== '') {
+                    this.$nextTick(() => {
+                        this.$emit('update:from_value', parseInt(newFromValue))
+                    })
+                }
             },
-            toValue: {
-                immediate: true,
-                handler(newToValue) {
-                    if (typeof newToValue !== 'undefined' && newToValue !== null) {
-                        this.$nextTick(() => {
-                            this.$emit('update:to_value', parseInt(newToValue))
-                        })
-                    }
+            changeToValue(newToValue) {
+                if (typeof newToValue !== 'undefined' && newToValue !== null && newToValue !== '') {
+                    this.$nextTick(() => {
+                        this.$emit('update:to_value', parseInt(newToValue))
+                    })
                 }
             }
         }

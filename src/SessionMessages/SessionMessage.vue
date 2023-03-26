@@ -16,13 +16,15 @@
             }
         },
         mounted() {
-            let self = this
+            console.log('start')
             setTimeout(() => {
-                self.close()
+                console.log('end')
+                this.close()
             }, 5000)
         },
         methods: {
             close() {
+                console.log('close')
                 this.isVisible = false
             }
         }

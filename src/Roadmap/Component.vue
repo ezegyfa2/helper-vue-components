@@ -3,24 +3,19 @@
 </template>
 
 <script>
-    import ClassAdder from './../../../ClassAdder.vue'
-
     export default {
-        mixins: [
-            ClassAdder
-        ],
         props: {
-            content: {
-                type: String
+            title_section: {
+                type: Object
             },
-            url: {
-                type: String
+            timeline_section: {
+                type: Object
             },
             added_classes: {
                 type: Object,
                 default () {
                     return {
-                        'li': 'text-uppercase'
+                        '.content': 'text-uppercase'
                     }
                 }
             }

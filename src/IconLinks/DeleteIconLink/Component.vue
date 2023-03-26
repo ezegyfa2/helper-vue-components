@@ -1,5 +1,5 @@
 <script>
-    import IconLink from './../IconLink/Component.vue'
+    import IconLink from '../IconLink/Component.vue'
 
     export default {
         mixins: [
@@ -9,18 +9,19 @@
             icon_class: {
                 type: String,
                 default: 'fas fa-trash'
-            }
-        },
-        data() {
-            return {
-                addedClasses: {
-                    root: [
-                        'mx-2',
-                        'btn'
-                    ]
+            },
+            added_classes: {
+                type: Object,
+                default () {
+                    return {
+                        root: [
+                            'mx-2',
+                            'btn'
+                        ]
+                    }
                 }
             }
-        }
+        },
     }
 </script>
 

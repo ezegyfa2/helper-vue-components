@@ -24,45 +24,8 @@
                 type: Array
             },
             filter_form_item_type_prefix: {
-                type: String
-            }
-        },
-        data() {
-            return {
-                filterFormItemTypePrefix: null,
-                filterSections: [],
-                dataTransmits: {
-                    filterFormItemTypePrefix: 'filter_form_item_type_prefix',
-                    filterSections: 'filter_sections'
-                }
-            }
-        },
-        methods: {
-            editUrl(id) {
-                return window.location.origin + window.location.pathname + '/edit/' + id
-            },
-            deleteUrl(id) {
-                return window.location.origin + window.location.pathname + '/' + id
-            },
-            filterValueUpdated(filterSection, newValue) {
-                if (newValue !== null && typeof newValue !== 'undefined') {
-                    this.$emit('filterRefreshed')
-                }
-                filterSection.data.value = newValue
-            },
-            filterToValueUpdated(filterSection, newValue) {
-                console.log('filterToValue ' + newValue)
-                if (newValue !== null && typeof newValue !== 'undefined') {
-                    this.$emit('filterRefreshed')
-                }
-                filterSection.data.to_value = newValue
-            },
-            filterFromValueUpdated(filterSection, newValue) {
-                console.log('filterFromValue ' + newValue)
-                if (newValue !== null && typeof newValue !== 'undefined') {
-                    this.$emit('filterRefreshed')
-                }
-                filterSection.data.from_value = newValue
+                type: String,
+                default: 'bootstrap'
             }
         },
         computed: {
@@ -73,17 +36,43 @@
             }
         },
         watch: {
-            filterSections: {
+            filter_sections: {
                 immediate: true,
                 handler(newFilterSections) {
                     if (newFilterSections) {
                         newFilterSections.forEach((filterSection) => {
-                            filterSection.type = this.filterFormItemTypePrefix + '-' + filterSection.type
+                            filterSection.type = this.filter_form_item_type_prefix + '-' + filterSection.type
                         })
                     }
                 },
                 flush: 'sync'
             },
+        },
+        methods: {
+            editUrl(id) {
+                return window.location.origin + window.location.pathname + '/edit/' + id
+            },
+            deleteUrl(id) {
+                return window.location.origin + window.location.pathname + '/' + id
+            },
+            filterValueUpdated(filterSection, newValue) {
+                filterSection.data.value = newValue
+                if (newValue !== null && typeof newValue !== 'undefined') {
+                    this.$emit('update:filter_sections', this.filter_sections)
+                }
+            },
+            filterToValueUpdated(filterSection, newValue) {
+                filterSection.data.to_value = newValue
+                if (newValue !== null && typeof newValue !== 'undefined') {
+                    this.$emit('update:filter_sections', this.filter_sections)
+                }
+            },
+            filterFromValueUpdated(filterSection, newValue) {
+                filterSection.data.from_value = newValue
+                if (newValue !== null && typeof newValue !== 'undefined') {
+                    this.$emit('update:filter_sections', this.filter_sections)
+                }
+            }
         }
     }
 </script>

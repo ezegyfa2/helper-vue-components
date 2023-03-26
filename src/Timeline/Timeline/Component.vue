@@ -5,14 +5,8 @@
 <script>
     export default {
         props: {
-            title_section: {
-                type: Object
-            },
-            member_sections: {
+            timeline_item_sections: {
                 type: Array
-            },
-            footer_text: {
-                type: String
             }
         }
     }

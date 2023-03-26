@@ -1,0 +1,5 @@
+ul.timeline
+    dynamic-component(
+        v-for='timelineItem in timeline_item_sections'
+        v-bind:component_infos='timelineItem'
+    )

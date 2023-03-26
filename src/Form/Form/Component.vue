@@ -3,8 +3,6 @@
 </template>
 
 <script>
-    import clone from 'just-clone'
-
     export default {
         props: {
             url: {
@@ -36,18 +34,24 @@
             }
         },
         methods: {
-            convertFormItemSections(formItemSections) {
-                let self = this
-                return formItemSections.map((formItem) => {
-                    let convertedFormItem = clone(formItem)
-                    if (self.formItemTypePrefix) {
-                        convertedFormItem.type = self.formItemTypePrefix + '-' + formItem.type
-                    }
-                    else if (self.formItemConvertTypes[formItem.type]) {
-                        convertedFormItem.type = self.formItemConvertTypes[formItem.type]
-                    }
-                    return convertedFormItem
+            getConvertedType(formItemType) {
+                if (this.formItemTypePrefix) {
+                    return this.formItemTypePrefix + '-' + formItemType
+                }
+                else if (this.formItemConvertTypes[formItem.type]) {
+                    return this.formItemConvertTypes[formItemType]
+                }
+                else {
+                    return formItemType
+                }
+            },
+            getRequestData(formItemSections) {
+                let data = {}
+                formItemSections.forEach(formItemSection => {
+                    data[formItemSection.data.name] = formItemSection.data.value
                 })
+                data._token = document.querySelector('meta[name="csrf-token"]').content
+                return data
             },
             submitForm (e) {
                 this.submitted = true

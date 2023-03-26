@@ -1,10 +1,5 @@
 <script>
     export default {
-        data() {
-            return {
-                isToggled: false
-            }
-        },
         mounted() {
             this.initToggler()
         },
@@ -21,7 +16,8 @@
             },
             toggle() {
                 //$("body").toggleClass("sidebar-toggled")
-                this.isToggled = !this.isToggled
+                console.log('toggling')
+                this.$emit('toggled', !this.toggled)
                 //$(this.$refs.sidebar).toggleClass("toggled")
             },
             isToggleEventRegistered() {
