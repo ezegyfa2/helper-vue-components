@@ -24,6 +24,7 @@
                 template_type_name: this.template_type_name,
                 params: this.params
             }
+            //console.log(JSON.stringify(this.replaceConfigTemplates(templateToCompile)))
             this.compiledTemplate = this.replaceConfigTemplates(templateToCompile)
         },
         computed: {
