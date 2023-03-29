@@ -1,4 +1,4 @@
-window.mergeComponentClasses = function (componentClasses) {
+window.mergeComponentClasses = (componentClasses) => {
     /*if (!componentClasses[0]) {
 
 	}*/
@@ -49,7 +49,7 @@ export default {
                 fromVal &&
                 typeof fromVal === 'function'
             ) {
-                return function () {
+                return () => {
                     let originalData = toVal();
                     let newData = fromVal();
                     let mergedData = window.originalMergeStrategy(toVal, fromVal, vm);

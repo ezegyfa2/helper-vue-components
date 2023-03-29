@@ -45,7 +45,7 @@
             replaceUpperConfigTemplates(config, globalParams) {
                 if (Array.isArray(config)) {
                     let self = this
-                    return config.map(function(configValue) {
+                    return config.map((configValue) => {
                         return self.replaceUpperConfigTemplates(configValue, globalParams)
                     })
                 }
@@ -68,7 +68,7 @@
                     }
                     else if (Array.isArray(value)) {
                         let self = this
-                        config[key] = value.map(function(configValue) {
+                        config[key] = value.map((configValue) => {
                             return self.replaceUpperConfigTemplates(configValue, globalParams)
                         })
                     }
@@ -109,7 +109,7 @@
                 else if (Array.isArray(template)) {
                     let arrayTemplate = []
                     let self = this
-                    template.forEach(function (templateValue) {
+                    template.forEach((templateValue) => {
                         let replacedTemplateValue = self.getReplacedTemplateValue(templateValue, params, paramPrefix)
                         if (typeof templateValue == 'object' && 'array_data' in templateValue && templateValue.merge_to_parent) {
                             arrayTemplate = arrayTemplate.concat(replacedTemplateValue)
@@ -150,7 +150,7 @@
                     delete replaceTemplate.array_data
                     delete replaceTemplate.merge_to_parent
                     let self = this
-                    return arrayParam.map(function(param) {
+                    return arrayParam.map((param) => {
                         let configParam = {}
                         configParam[arrayParamName] = param
                         return self.replaceUpperTemplateParams(replaceTemplate, configParam, paramPrefix)

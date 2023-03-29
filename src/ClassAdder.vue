@@ -9,7 +9,7 @@
             this.addClassesToItemsByQueries(this.added_classes)
         },
         updated() {
-            this.$nextTick(function () {
+            this.$nextTick(() => {
                 this.addClassesToItemsByQueries(this.added_classes)
             })
         },
@@ -79,13 +79,13 @@
             addClassesToItems(items, appendClasses) {
                 if (Array.isArray(appendClasses)) {
                     let self = this
-                    appendClasses.forEach(function (appendClass) {
+                    appendClasses.forEach((appendClass) => {
                         self.addClassesToItems(items, appendClass)
                     })
                 }
                 else {
                     if (NodeList.prototype.isPrototypeOf(items)) {
-                        items.forEach(function(item) {
+                        items.forEach((item) => {
                             if (!item.classList.contains(appendClasses)) {
                                 item.classList.add(appendClasses)
                             }

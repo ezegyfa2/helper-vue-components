@@ -16,7 +16,7 @@
         mounted() {
             let self = this
             for (const [deepPropertyName, subDataNames] of Object.entries(this.deepProperties)) {
-                //subDataNames.forEach(function (subDataName) { 
+                //subDataNames.forEach((subDataName) => { 
                 for (const [subObjectName, subObjectPropertyName] of Object.entries(self.getSubDataNamesObject(subDataNames, deepPropertyName))) {
                     self.initDeepWatcher(subObjectName, (newSubObjectValue) => {
                         if (Array.isArray(newSubObjectValue)) {
@@ -41,7 +41,7 @@
                     })
                 }
                 self.initDeepWatcher(deepPropertyName, (newDeepPropertyValue) => {
-                    //subDataNames.forEach(function (subDataName) {
+                    //subDataNames.forEach((subDataName) => {
                     for (const [subObjectName, subObjectPropertyName] of Object.entries(self.getSubDataNamesObject(subDataNames, deepPropertyName))) {
                         if (Array.isArray(self[subObjectName])) {
                             let subDataArray = self[subObjectName]
