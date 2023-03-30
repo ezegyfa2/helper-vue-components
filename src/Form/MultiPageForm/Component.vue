@@ -44,9 +44,17 @@
             },
             getInvalidFormSection() {
                 for (let formItemSection of this.form_item_sections[this.currentPageNumber]) {
-                    let htmlElement = this.$refs[formItemSection.data.name][0].$refs['inputElement']
-                    if (!htmlElement.checkValidity()) {
-                        return htmlElement
+                    let htmlSelection = this.$refs[formItemSection.data.name][0].$refs['inputElement']
+                    // In case of radio buttons
+                    if (Array.isArray(htmlSelection)) {
+                        for (let htmlElement of htmlSelection) {
+                            if (!htmlElement.checkValidity()) {
+                                return htmlElement
+                            }
+                        }
+                    }
+                    else if (!htmlSelection.checkValidity()) {
+                        return htmlSelection
                     }
                 }
                 return null

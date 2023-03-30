@@ -41,9 +41,7 @@
         watch: {
             selectedOption: {
                 handler(newSelectedOption) {
-                    console.log('selected option')
                     if (newSelectedOption && this.getOptionValue(this.value) != this.getOptionValue(newSelectedOption)) {
-                        console.log('change value')
                         this.$emit('update:value', this.getOptionValue(newSelectedOption))
                     }
                 },
@@ -54,10 +52,7 @@
                 handler(newValue) {
                     console.log('value ' + newValue)
                     if (newValue && (!this.selectedOption || this.getOptionValue(this.selectedOption) != this.getOptionValue(newValue))) {
-                        console.log('change selectedOption')
                         this.selectedOption = this.getSelectedOption()
-                        //console.log('pre-selectedOption ' + this.getSelectedOption().value)
-                        //console.log('post-selectedOption ' + this.selectedOption.value)
                     }
                 },
                 flush: 'sync'

@@ -9,5 +9,6 @@ export default {
 		registerVueComponent(prefix + '-datetime-input', require('./Inputs/DateTime/Component.vue').default, Vue)
 		registerVueComponent(prefix + '-select', require('./Select/Component.vue').default, Vue)
 		registerVueComponent(prefix + '-textarea', require('./TextArea/Component.vue').default, Vue)
+		registerVueComponent(prefix + '-radio', require('./Radio/Component.vue').default, Vue)
     }
 }

@@ -1,0 +1,12 @@
+section
+    h3 radio cim
+    div(v-for='option in options')
+        input(
+            type='radio' 
+            ref='inputElement'
+            v-bind:name='name'
+            v-model='currentValue' 
+            v-bind:value='option.value'
+            v-bind:required='required'
+        ) 
+        | {{ option.label }}
