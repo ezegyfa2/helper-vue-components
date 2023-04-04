@@ -74,6 +74,12 @@ export default {
             'helper-vue-components/Template/Component.vue'
         );
         registerVueComponent(
+            'page',
+            require('./Page/Component.vue').default,
+            Vue,
+            'helper-vue-components/Page/Component.vue'
+        );
+        registerVueComponent(
             'landing-page',
             require('./LandingPage/Component.vue').default,
             Vue,
