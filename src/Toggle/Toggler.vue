@@ -17,7 +17,8 @@
             toggle() {
                 //$("body").toggleClass("sidebar-toggled")
                 console.log('toggling')
-                this.$emit('toggled', !this.toggled)
+                this.toggled = !this.toggled
+                //this.$emit('toggled', !this.toggled)
                 //$(this.$refs.sidebar).toggleClass("toggled")
             },
             isToggleEventRegistered() {

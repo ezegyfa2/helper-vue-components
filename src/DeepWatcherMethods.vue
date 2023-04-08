@@ -25,7 +25,8 @@
             },
             changeDataValue(dataName, newValue) {
                 if (this.$options.propsData[dataName]) {
-                    this.$emit('update:' + dataName, newValue)
+                    this[dataName] = Object.assign({}, newValue)
+                    //this.$emit('update:' + dataName, newValue)
                 }
                 else {
                     this[dataName] = Object.assign({}, newValue)
