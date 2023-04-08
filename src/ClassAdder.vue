@@ -19,18 +19,23 @@
                     classes = [ classes ]
                 }
                 if (!this.added_classes) {
-                    this.$emit('update:added_classes', {})
+                    this.added_classes = {}
+                    //this.$emit('update:added_classes', {})
                 }
                 if (this.added_classes[query]) {
                     if (!Array.isArray(this.added_classes[query])) {
-                        this.$emit('update:added_classes', [ this.added_classes[query] ])
+                        this.added_classes = [ this.added_classes[query] ]
+                        //this.$emit('update:added_classes', [ this.added_classes[query] ])
                     }
-                    this.$emit('update:added_classes', this.added_classes[query].concat(classes) )
+                    this.added_classes = this.added_classes[query].concat(classes)
+                    //this.$emit('update:added_classes', this.added_classes[query].concat(classes) )
                 }
                 else {
-                    this.$emit('update:added_classes', classes)
+                    this.added_classes = classes
+                    //this.$emit('update:added_classes', classes)
                 }
-                this.$emit('update:added_classes', JSON.parse(JSON.stringify(this.added_classes)) )
+                this.added_classes = JSON.parse(JSON.stringify(this.added_classes))
+                //this.$emit('update:added_classes', JSON.parse(JSON.stringify(this.added_classes)) )
             },
             removeClass(query, classToRemove) {
                 this.removeClassFromItemsByQuery(query, classToRemove)

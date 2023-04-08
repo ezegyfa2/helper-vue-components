@@ -60,7 +60,6 @@
             },
             selectPage(pageNumber) {
                 this.$emit('update:selected_page_number', pageNumber)
-
             }
         }
     }
