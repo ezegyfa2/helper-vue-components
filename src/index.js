@@ -75,15 +75,21 @@ export default {
         );
         registerVueComponent(
             'page',
-            require('./Page/Component.vue').default,
+            require('./Pages/Page/Component.vue').default,
             Vue,
-            'helper-vue-components/Page/Component.vue'
+            'helper-vue-components/Pages/Page/Component.vue'
+        );
+        registerVueComponent(
+            'page-with-facebook-events',
+            require('./Pages/PageWithFacebookEvents/Component.vue').default,
+            Vue,
+            'helper-vue-components/Pages/Page/Component.vue'
         );
         registerVueComponent(
             'landing-page',
-            require('./LandingPage/Component.vue').default,
+            require('./Pages/LandingPage/Component.vue').default,
             Vue,
-            'helper-vue-components/LandingPage/Component.vue'
+            'helper-vue-components/Pages/LandingPage/Component.vue'
         );
         registerVueComponent(
             'navigation-link',
