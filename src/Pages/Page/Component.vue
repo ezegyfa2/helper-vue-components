@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import SessionMessages from './../SessionMessages/SessionMessages.vue'
+    import SessionMessages from '../../SessionMessages/SessionMessages.vue'
 
     export default {
         mixins: [
