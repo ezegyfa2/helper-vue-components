@@ -13,6 +13,12 @@
             live_search: {
                 type: Boolean,
                 default: true
+            },
+            data_url: {
+                type: String
+            },
+            data_infos: {
+                type: Object
             }
         },
         data() {
@@ -20,28 +26,11 @@
                 selectedOption: null
             }
         },
-        computed: {
-            configuredOptions() {
-                return this.options.map(option => {
-                    if (typeof(option) == 'object') {
-                        return option
-                    }
-                    else {
-                        return {
-                            value: option,
-                            text: option
-                        }
-                    }
-                })
-            },
-            liveSearch() {
-                return this.live_search && (this.options.length > 15)
-            }
-        },
         watch: {
             selectedOption: {
                 handler(newSelectedOption) {
                     if (newSelectedOption && this.getOptionValue(this.value) != this.getOptionValue(newSelectedOption)) {
+                        //this.value = this.getOptionValue(newSelectedOption)
                         this.$emit('update:value', this.getOptionValue(newSelectedOption))
                     }
                 },
@@ -60,7 +49,7 @@
         },
         methods: {
             getSelectedOption() {
-                for (const option of this.configuredOptions) {
+                for (const option of this.options) {
                     if (this.getOptionValue(option) == this.value) {
                         return option
                     }

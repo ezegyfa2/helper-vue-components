@@ -1,5 +1,8 @@
 VSelect(
     v-bind:name='name' 
     v-model='selectedOption'
-    :options='configuredOptions'
+    v-bind:searchable='live_search'
+    v-bind:options.sync='options'
+    v-bind:data_url='data_url'
+    v-bind:data_infos='data_infos'
 )

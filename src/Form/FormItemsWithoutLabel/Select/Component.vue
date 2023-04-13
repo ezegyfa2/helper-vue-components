@@ -10,6 +10,14 @@
         mixins: [
             Select,
             ValidationErrors,
-        ]
+        ],
+        props: {
+            data_url: {
+                type: String
+            },
+            data_infos: {
+                type: Object
+            }
+        }
     }
 </script>

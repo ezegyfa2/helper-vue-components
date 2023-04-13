@@ -1,9 +1,11 @@
 <script>
     import FormItem from './FormItem.vue'
+    import CurrentChangeChecker from '../../CurrentChangeChecker.vue'
 
     export default {
         mixins: [
             FormItem,
+            CurrentChangeChecker,
         ],
         props: {
             value: {},
@@ -11,14 +13,13 @@
         data() {
             return {
                 currentValue: null,
-                currentValueChanges: []
             }
         },
         watch: {
             value: {
                 immediate: true,
                 handler(newValue) {
-                    if (typeof newValue !== 'undefined' && newValue !== null && !this.isCurrentValueChange(newValue)) {
+                    if (typeof newValue !== 'undefined' && newValue !== null && !this.isCurrentValueChange(newValue, 'value')) {
                         this.currentValue = newValue
                     }
                 },
@@ -29,30 +30,11 @@
                 handler(newValue) {
                     if (typeof newValue !== 'undefined' && newValue !== null && newValue != this.value) {
                         this.updateCurrentValueChanges()
-                        this.currentValueChanges.push({
-                            value: newValue,
-                            time: Date.now()
-                        })
+                        this.addCurrentValueChange(newValue, 'value')
                         this.$emit('update:value', newValue)
                     }
                 },
                 flush: 'sync'
-            }
-        },
-        methods: {
-            updateCurrentValueChanges() {
-                let currentTime = Date.now()
-                while (this.currentValueChanges.length > 0 && currentTime - this.currentValueChanges[0].time > 10000) {
-                    this.currentValueChanges = this.currentValueChanges.slice(1)
-                }
-            },
-            isCurrentValueChange(valueToCheck) {
-                for (let currentValueChange of this.currentValueChanges) {
-                    if (currentValueChange.value == valueToCheck) {
-                        return true
-                    }
-                }
-                return false
             }
         }
     }

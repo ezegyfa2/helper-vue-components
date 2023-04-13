@@ -7,10 +7,10 @@
         ],
         props: {
             options: {
-                type: Array
-            },
-            kerek_meret: {
-                type: Number
+                type: Array,
+                default() {
+                    return []
+                }
             }
         },
         computed: {

@@ -15,6 +15,7 @@
         },
         methods: {
             addClass(query, classes) {
+                this.addClassesToItemsByQuery(query, classes)
                 if (!Array.isArray(classes)) {
                     classes = [ classes ]
                 }
@@ -24,18 +25,16 @@
                 }
                 if (this.added_classes[query]) {
                     if (!Array.isArray(this.added_classes[query])) {
-                        this.added_classes = [ this.added_classes[query] ]
+                        this.added_classes[query] = [ this.added_classes[query] ]
                         //this.$emit('update:added_classes', [ this.added_classes[query] ])
                     }
-                    this.added_classes = this.added_classes[query].concat(classes)
+                    this.added_classes[query] = this.added_classes[query].concat(classes)
                     //this.$emit('update:added_classes', this.added_classes[query].concat(classes) )
                 }
                 else {
-                    this.added_classes = classes
+                    this.added_classes[query] = classes
                     //this.$emit('update:added_classes', classes)
                 }
-                this.added_classes = JSON.parse(JSON.stringify(this.added_classes))
-                //this.$emit('update:added_classes', JSON.parse(JSON.stringify(this.added_classes)) )
             },
             removeClass(query, classToRemove) {
                 this.removeClassFromItemsByQuery(query, classToRemove)
@@ -73,8 +72,12 @@
                 }
             },
             addClassesToItemsByQuery(query, appendClasses) {
+                console.log(query)
                 if (query == 'root') {
-                    this.addClassesToItems(this.$el, appendClasses)
+                    console.log(this.$el)
+                    if (this.$el) {
+                        this.addClassesToItems(this.$el, appendClasses)
+                    }
                 }
                 else {
                     let selectedItems = this.$el.querySelectorAll(query)

@@ -35,7 +35,7 @@
                         else {
                             if (newSubObjectValue && newSubObjectValue.data && newSubObjectValue.data[subObjectPropertyName] != self[deepPropertyName]) {
                                 self.changeDeepData(self[subObjectName], subObjectPropertyName, self[deepPropertyName])
-                                //self.refreshDataValue(subObjectName)
+                                self.refreshDataValue(subObjectName)
                             }
                         }
                     })
@@ -55,12 +55,12 @@
                             if (hasChages) {
                                 self[subObjectName] = JSON.parse(JSON.stringify(subDataArray))
                             }
-                            //self.refreshNavigationLinkSectionsToggle(self.navigation_link_group_sections, newDeepPropertyValue)
+                            self.refreshDataValue(subObjectName)
                         }
                         else {
                             if (self[subObjectName] && self[subObjectName].data && self[subObjectName].data[subObjectPropertyName] != self[deepPropertyName]) {
                                 self.changeDeepData(self[subObjectName], subObjectPropertyName, newDeepPropertyValue)
-                                //self.refreshDataValue(subObjectName)
+                                self.refreshDataValue(subObjectName)
                             }
                         }
                     }
