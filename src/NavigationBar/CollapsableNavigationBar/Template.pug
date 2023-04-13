@@ -1,7 +1,7 @@
 nav.navbar.navbar-expand-lg.fixed-top(ref='mainNav')
     .container
         a.navbar-brand(v-bind:href='title_url') {{ title }}
-        button.navbar-toggler(
+        button.btn.navbar-toggler(
             type='button' 
             data-bs-toggle='collapse' 
             v-bind:data-bs-target='"#" + navigationBarId' 
@@ -14,6 +14,6 @@ nav.navbar.navbar-expand-lg.fixed-top(ref='mainNav')
         .collapse.navbar-collapse(v-bind:id='navigationBarId')
             ul.navbar-nav
                 dynamic-component(
-                    v-for='link in links' v-bind:key='link.content'
+                    v-for='link in links' v-bind:key='link.data.content'
                     v-bind:component_infos='link'
                 )
