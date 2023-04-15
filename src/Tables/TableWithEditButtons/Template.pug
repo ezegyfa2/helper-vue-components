@@ -19,7 +19,7 @@
                 th
         tbody
             tr(v-for='row in rows')
-                td(v-for='column in row') {{ column }}
+                td(v-for='column in row') {{ shortStringFromColumn(column, 30) }}
                 td
                     .d-flex
                         edit-icon-link(

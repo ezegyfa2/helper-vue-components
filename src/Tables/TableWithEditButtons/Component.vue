@@ -72,7 +72,18 @@
                 if (newValue !== null && typeof newValue !== 'undefined') {
                     this.$emit('update:filter_sections', this.filter_sections)
                 }
+            },
+            shortStringFromColumn(text, maxLength) {
+                if(typeof text === 'string') {
+                    return shortString(text, maxLength)
+                } else {
+                    return text
+                }
             }
         }
     }
 </script>
+
+<style lang="scss" scoped>
+    @import "Style.scss";
+</style>
