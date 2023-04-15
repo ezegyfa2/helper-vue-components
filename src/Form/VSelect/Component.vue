@@ -350,7 +350,6 @@
     .v-select {
         position: relative;
         width: 100%;
-        height: 30px;
         cursor: pointer;
     
     
@@ -384,7 +383,7 @@
         white-space: nowrap;
         border: 1px solid #ccc;
         padding: 0.375rem 0.75rem;
-        font-size: 12px;
+        font-size: 16px;
         font-family: inherit, sans-serif;
         line-height: 1.5;
         border-radius: 0.25rem;
