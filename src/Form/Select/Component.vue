@@ -39,7 +39,6 @@
             value: {
                 immediate: true,
                 handler(newValue) {
-                    console.log('value ' + newValue)
                     if (newValue && (!this.selectedOption || this.getOptionValue(this.selectedOption) != this.getOptionValue(newValue))) {
                         this.selectedOption = this.getSelectedOption()
                     }

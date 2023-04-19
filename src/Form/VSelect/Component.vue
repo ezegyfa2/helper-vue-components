@@ -84,13 +84,16 @@
                     : this.defaultTitle;
             },
             filteredOptions() {
-                return this.options
-                console.log('filtered', this.options)
-                let filteredOptions = this.getLongFilteredOptions()
-                filteredOptions.forEach(item => {
-                    item.text = shortString(item.text)
-                })
-                return filteredOptions
+                if (this.data_url) {
+                    return this.options
+                }
+                else {
+                    let filteredOptions = this.getLongFilteredOptions()
+                    filteredOptions.forEach(item => {
+                        item.text = shortString(item.text)
+                    })
+                    return filteredOptions
+                }
             },
             reversedOptions() {
                 return [...this.filteredOptions].reverse();
@@ -103,7 +106,6 @@
             options: {
                 immediate: true,
                 handler(newOptions) {
-                    console.log('option watch', newOptions)
                     if (newOptions) {
                         for (let i = 0; i < newOptions.length; ++i) {
                             if (typeof(newOptions[i]) != 'object') {
@@ -115,7 +117,6 @@
                         }
                         newOptions.forEach(option => {
                             option.text = shortString(option.text, 30)
-                            console.log(option.text)
                         })
                     }
                 },
@@ -253,13 +254,13 @@
             },
             refreshOptions(searchedText) {
                 this.data_infos['searched-text'] = searchedText
-                console.log(this.data_infos)
                 $.post({
                     url: this.data_url,
                     data: this.data_infos
                 }).done((data) => {
-                    console.log(data)
-                    this.$emit('update:options', data)
+                    if (Array.isArray(data)) {
+                        this.$emit('update:options', data)
+                    }
                 })
             },
             isSelectedOption(option, index) {

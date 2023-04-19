@@ -72,9 +72,7 @@
                 }
             },
             addClassesToItemsByQuery(query, appendClasses) {
-                console.log(query)
                 if (query == 'root') {
-                    console.log(this.$el)
                     if (this.$el) {
                         this.addClassesToItems(this.$el, appendClasses)
                     }
