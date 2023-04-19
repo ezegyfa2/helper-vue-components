@@ -265,6 +265,12 @@ export default {
             'helper-vue-components/Form/FormItems/FormItemWithLabel/Component.vue'
         );
         registerVueComponent(
+            'form-item-with-order',
+            require('./Form/FormItems/FormItemWithOrder/Component.vue').default,
+            Vue,
+            'helper-vue-components/Form/FormItems/FormItemWithOrder/Component.vue'
+        );
+        registerVueComponent(
             'csrf-input',
             require('./CsrfInput/Component.vue').default,
             Vue,
