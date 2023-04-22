@@ -16,7 +16,8 @@
                     return {
                         root: [
                             'mx-2',
-                            'btn'
+                            'btn',
+                            'btn-delete'
                         ]
                     }
                 }
