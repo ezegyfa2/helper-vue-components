@@ -60,7 +60,7 @@
                         else {
                             if (self[subObjectName] && self[subObjectName].data && self[subObjectName].data[subObjectPropertyName] != self[deepPropertyName]) {
                                 self.changeDeepData(self[subObjectName], subObjectPropertyName, newDeepPropertyValue)
-                                self.refreshDataValue(subObjectName)
+                                self.refreshDataValue(self[subObjectName])
                             }
                         }
                     }
