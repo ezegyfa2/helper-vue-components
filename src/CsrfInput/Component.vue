@@ -6,7 +6,7 @@
     export default {
         computed: {
             token() {
-                return document.querySelector('meta[name="csrf-token"]').content
+                return getCsrfToken()
             }
         }
     }

@@ -5,9 +5,9 @@
 }
 
 @include media-breakpoint-down(md) {
-    @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, $line-height-sm, 0)
+    @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-sm, 0)
 }
 
 @include media-breakpoint-between(md, 1024px) {
-    @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-base, $line-height-sm, 0)
+    @include pagination-size($pagination-padding-y-sm, $pagination-padding-x-sm, $font-size-base, 0)
   }

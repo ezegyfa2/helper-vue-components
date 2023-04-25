@@ -1,0 +1,16 @@
+form-item-with-order(
+    v-bind:label='label'
+    v-bind:validation_errors='validation_errors'
+)
+    input.form-item-control(
+        ref='inputElement'
+        v-bind:name='name'
+        v-bind:placeholder='placeholder'
+        v-model='currentValue'
+        v-bind:required='required'
+        type='email'
+        v-bind:minlength='minlength'
+        v-bind:maxlength='maxlength'
+        v-bind:class='invalidClass'
+        v-bind:id='formItemId'
+    )

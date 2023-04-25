@@ -22,12 +22,6 @@
             is_submit_button: {
                 type: Boolean,
                 default: false
-            },
-            on_click: {
-                designIgnored: true,
-                default() {
-                    return () => { console.log('click') }
-                } 
             }
         },
         computed: {
