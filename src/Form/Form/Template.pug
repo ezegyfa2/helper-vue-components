@@ -14,4 +14,4 @@ form(
         v-on:update:value='(newValue) => { formItemSection.data.value = newValue }'
     )
     .form-item
-        button.btn.btn-primary.form-item-control.text-align-center(type='submit' @click='submitForm') {{ button_title }}
+        button.btn.btn-form.form-item-control.text-align-center(type='submit' @click='submitForm') {{ button_title }}

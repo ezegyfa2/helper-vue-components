@@ -16,6 +16,11 @@
                 default: ""
             }
         },
+        data() {
+            return {
+                isActive: false,
+            };
+        },
         computed: {
             formItemId() {
                 if (this.form_item_id == "") {
@@ -25,6 +30,11 @@
                     return this.form_item_id
                 }
             }
+        },
+        methods: {
+            changeOrder() {
+                this.isActive = !this.isActive;
+            },
         }
     }
 </script>
