@@ -7,6 +7,9 @@
         props: {
             validation_errors: {
                 type: Array
+            },
+            saved_template_names: {
+                type: Array
             }
         },
         computed: {

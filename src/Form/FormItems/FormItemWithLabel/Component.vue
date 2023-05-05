@@ -14,6 +14,9 @@
             form_item_id: {
                 type: String,
                 default: ""
+            },
+            saved_template_names: {
+                type: Array
             }
         },
         computed: {
