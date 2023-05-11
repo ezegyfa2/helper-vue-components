@@ -1,9 +1,0 @@
-form-item-with-validation-errors(v-bind:validation_errors='validation_errors')
-    .d-flex.justify-content-between
-        label.form-label(v-bind:for='formItemId') {{ label }}
-        .d-flex
-            div.me-2(:class="{ 'active': isActive }", @click="changeOrder")
-                i.fas.fa-solid.fa-caret-up
-            div(:class="{ 'active': !isActive }", @click='changeOrder')
-                i.fas.fa-solid.fa-caret-down
-    slot

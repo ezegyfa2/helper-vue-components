@@ -12,9 +12,11 @@
                         v-bind:value='filterSection.data.value'
                         v-bind:from_value='filterSection.data.from_value'
                         v-bind:to_value='filterSection.data.to_value'
+                        v-bind:options='filterSection.data.options'
                         v-on:update:value='(newValue) => { filterValueUpdated(filterSection, newValue) }'
                         v-on:update:from_value='(newValue) => { filterFromValueUpdated(filterSection, newValue) }'
                         v-on:update:to_value='(newValue) => { filterToValueUpdated(filterSection, newValue) }'
+                        v-on:update:options='(newValue) => { filterOptionsUpdated(filterSection, newValue) }'
                     )
                 th
         tbody
@@ -22,13 +24,15 @@
                 td(v-for='column in row') {{ shortStringFromColumn(column, 30) }}
                 td
                     .d-flex
-                        edit-icon-link(
+                        component(
+                            v-bind:is='edit_icon_link_type'
                             v-bind:url='editUrl(row.id)'
                         )
                         form(method='post' v-bind:action='deleteUrl(row.id)')
                             csrf-input
                             input(type="hidden" name="_method" value="DELETE")
-                            delete-icon-link(
+                            component(
+                                v-bind:is='delete_icon_link_type'
                                 v-bind:is_submit_button='true'
                             )
         tfoot(v-if='with_footer')

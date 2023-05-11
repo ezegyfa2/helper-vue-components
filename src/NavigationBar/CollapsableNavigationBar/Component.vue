@@ -16,7 +16,7 @@
             title_url: {
                 type: String
             },
-            links: {
+            link_sections: {
                 type: Array
             },
             added_classes: {

@@ -14,6 +14,10 @@
             form_item_id: {
                 type: String,
                 default: ""
+            },
+            order: {
+                type: String,
+                default: 'none'
             }
         },
         data() {
@@ -31,10 +35,32 @@
                 }
             }
         },
-        methods: {
-            changeOrder() {
-                this.isActive = !this.isActive;
+        watch: {
+            order: {
+                immediate: true,
+                handler(newOrder) {
+                    this.$emit('update:order', newOrder)
+                },
+                flush: 'sync'
             },
+        },
+        methods: {
+            changeAscOrderBy() {
+                if (this.order == 'asc') {
+                    this.order = 'none'
+                }
+                else {
+                    this.order = 'asc'
+                }
+            },
+            changeDescOrderBy() {
+                if (this.order == 'desc') {
+                    this.order = 'none'
+                }
+                else {
+                    this.order = 'desc'
+                }
+            }
         }
     }
 </script>

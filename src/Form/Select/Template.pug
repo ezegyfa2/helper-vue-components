@@ -2,7 +2,8 @@ VSelect(
     v-bind:name='name' 
     v-model='selectedOption'
     v-bind:searchable='live_search'
-    v-bind:options.sync='options'
+    v-bind:options='options'
     v-bind:data_url='data_url'
     v-bind:data_infos='data_infos'
+    v-on:update:options='changeOptions'
 )

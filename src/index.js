@@ -266,7 +266,7 @@ export default {
         );
         registerVueComponent(
             'form-item-with-order',
-            require('./Form/FormItems/FormItemWithOrder/Component.vue').default,
+            require('./Form/BootstrapFormItems/FilterFormItems/FormItemWithOrder/Component.vue').default,
             Vue,
             'helper-vue-components/Form/FormItems/FormItemWithOrder/Component.vue'
         );

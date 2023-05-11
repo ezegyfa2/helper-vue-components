@@ -15,6 +15,9 @@
                 currentValue: null,
             }
         },
+        beforeUnmount() {
+            console.log('unmount')
+        },
         watch: {
             value: {
                 immediate: true,

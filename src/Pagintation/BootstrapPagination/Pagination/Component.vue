@@ -10,6 +10,10 @@
             DataTransmitting,
         ],
         props: {
+            item_type: {
+                type: String,
+                default: 'data-collector-pagination-item'
+            },
             selected_page_number: {
                 type: Number
             },

@@ -1,12 +1,14 @@
 .dataTables_paginate.paging_simple_numbers(v-if='hasValidParams')
     ul.pagination
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             item_text='Previous' 
             v-bind:is_selectable='isPreviousSelectable' 
             v-bind:url='getUrl(selected_page_number - 1)'
             @itemSelected='selectPage(selected_page_number - 1)'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count > 0 && page_count < 7' 
             v-for='i in page_count' 
             v-bind:key='i' 
@@ -16,21 +18,24 @@
             @itemSelected='selectPage(i)'
         )
 
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7' 
             item_text='1' 
             v-bind:is_selected='isSelected(1)'
             v-bind:url='getUrl(1)'
             @itemSelected='selectPage(1)'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7' 
             item_text='2' 
             v-bind:is_selected='isSelected(2)'
             v-bind:url='getUrl(2)'
             @itemSelected='selectPage(2)'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7' 
             item_text='3' 
             v-bind:is_selected='isSelected(3)'
@@ -38,67 +43,77 @@
             @itemSelected='selectPage(3)'
         )
 
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7 && selected_page_number > 6' 
             v-bind:item_text='"..."' 
             v-bind:is_selectable='false'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7 && selected_page_number > 5 && selected_page_number < page_count' 
             v-bind:item_text='(selected_page_number - 2).toString()' 
             v-bind:is_selected='isSelected(selected_page_number - 2)'
             v-bind:url='getUrl(selected_page_number - 2)'
             @itemSelected='selectPage(selected_page_number - 2)'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7 && selected_page_number > 4 && selected_page_number < page_count - 1' 
             v-bind:item_text='(selected_page_number - 1).toString()' 
             v-bind:is_selected='isSelected(selected_page_number - 1)'
             v-bind:url='getUrl(selected_page_number - 1)'
             @itemSelected='selectPage(selected_page_number - 1)'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7 && selected_page_number > 3 && selected_page_number < page_count - 2' 
             v-bind:item_text='selected_page_number.toString()' 
             v-bind:is_selected='isSelected(selected_page_number)'
             v-bind:url='getUrl(selected_page_number)'
             @itemSelected='selectPage(selected_page_number)'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7 && selected_page_number > 2 && selected_page_number < page_count - 3' 
             v-bind:item_text='(selected_page_number + 1).toString()' 
             v-bind:is_selected='isSelected(selected_page_number + 1)'
             v-bind:url='getUrl(selected_page_number + 1)'
             @itemSelected='selectPage(selected_page_number + 1)'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7 && selected_page_number > 1 && selected_page_number < page_count - 4' 
             v-bind:item_text='(selected_page_number + 2).toString()' 
             v-bind:is_selected='isSelected(selected_page_number + 2)'
             v-bind:url='getUrl(selected_page_number + 2)'
             @itemSelected='selectPage(selected_page_number + 2)'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7 && selected_page_number < page_count - 5' 
             v-bind:item_text='"..."' 
             v-bind:is_selectable='false'
         )
 
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7' 
             v-bind:item_text='(page_count - 2).toString()' 
             v-bind:is_selected='isSelected(page_count - 2)'
             v-bind:url='getUrl(page_count - 2)'
             @itemSelected='selectPage(page_count - 2)'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7' 
             v-bind:item_text='(page_count - 1).toString()' 
             v-bind:is_selected='isSelected(page_count - 1)'
             v-bind:url='getUrl(page_count - 1)'
             @itemSelected='selectPage(page_count - 1)'
         )
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             v-if='page_count >= 7' 
             v-bind:item_text='page_count.toString()' 
             v-bind:is_selected='isSelected(page_count)'
@@ -106,7 +121,8 @@
             @itemSelected='selectPage(page_count)'
         )
 
-        bootstrap-pagination-item(
+        component(
+            v-bind:is='item_type'
             item_text='Next' 
             v-bind:is_selectable='isNextSelectable'
             v-bind:url='getUrl(selected_page_number + 1)'

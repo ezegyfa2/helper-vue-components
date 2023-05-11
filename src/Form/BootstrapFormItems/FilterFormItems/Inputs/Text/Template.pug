@@ -1,6 +1,7 @@
 form-item-with-order(
     v-bind:label='label'
     v-bind:validation_errors='validation_errors'
+    v-bind:order.sync='order'
 )
     input.form-item-control(
         ref='inputElement'

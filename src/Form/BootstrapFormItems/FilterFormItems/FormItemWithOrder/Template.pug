@@ -1,0 +1,17 @@
+form-item-with-validation-errors(v-bind:validation_errors='validation_errors')
+    .d-flex.justify-content-between
+        label.form-label(v-bind:for='formItemId') {{ label }}
+        .d-flex
+            div.me-2(
+                v-bind:class='order == "asc" ? "active" : "inactive"' 
+                v-on:click='changeAscOrderBy'
+            )
+                i.fas.fa-solid.fa-caret-up
+                | asc
+            div(
+                v-bind:class='order == "desc" ? "active" : "inactive"' 
+                v-on:click='changeDescOrderBy'
+            )
+                i.fas.fa-solid.fa-caret-down
+                | desc
+    slot

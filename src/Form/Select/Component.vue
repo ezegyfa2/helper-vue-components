@@ -54,6 +54,11 @@
                     }
                 }
                 return null
+            },
+            changeOptions(newOptions) {
+                console.log('sdfjhdsgjhsdofghsodghvj')
+                console.log(newOptions)
+                this.$emit("update:options", newOptions)
             }
         }
     }

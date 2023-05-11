@@ -7,6 +7,7 @@
         ],
         props: {
             event_infos: {
+                designIgnored: true,
                 type: Array
             }
         },
