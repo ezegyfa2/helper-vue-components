@@ -8,7 +8,10 @@
         props: {
             event_infos: {
                 designIgnored: true,
-                type: Array
+                type: Array,
+                default() {
+                    return []
+                }
             }
         },
         beforeMount() {
