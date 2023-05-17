@@ -8,8 +8,7 @@
     border-radius: 100%;
     color: #fff;
     background-color: #F64740;
-}
-
-.btn-delete:hover {
-    opacity: 0.8;
+    &:hover {
+        background-color: #F78E8A;
+    }
 }
