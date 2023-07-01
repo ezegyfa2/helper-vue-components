@@ -290,6 +290,18 @@ export default {
             Vue,
             'helper-vue-components/Pagintation/BootstrapPagination/Item/Component.vue'
         );
+        registerVueComponent(
+            'center-content',
+            require('./CenterContent/Component.vue').default,
+            Vue,
+            'helper-vue-components/CenterContent/Component.vue'
+        );
+        registerVueComponent(
+            'carousel',
+            require('./Carousel/Component.vue').default,
+            Vue,
+            'helper-vue-components/Carousel/Component.vue'
+        );
 
         Vue.component('VSelect', require('./Form/VSelect/Component.vue').default);
         require('./Form/FormItems/register.js').default.install(Vue);

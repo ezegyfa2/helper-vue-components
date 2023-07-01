@@ -1,0 +1,12 @@
+#carouselIndicators.carousel.slide(data-bs-ride="carousel")
+    ol.carousel-indicators
+        li(v-for='(carousel_item, index) in carousel_items' :class="{ active: carousel_item.isActive }" :data-target='carousel_item.dataTarget' :data-slide-to='index' :aria-current='carousel_item.isActive' :aria-label='carousel_item.alt')
+    .carousel-inner
+        .carousel-item(v-for='carousel_item in carousel_items' :class="{ active: carousel_item.isActive }")
+            img.d-block.w-100(:src='carousel_item.src' :alt='carousel_item.alt')
+    a.carousel-control-prev(href='#carouselIndicators' role='button' data-slide='prev')
+        span.carousel-control-prev-icon(aria-hidden='true')
+        span.visually-hidden Previous
+    a.carousel-control-next(href='#carouselIndicators' role='button' data-slide='next')
+        span.carousel-control-next-icon(aria-hidden='true')
+        span.visually-hidden Next
