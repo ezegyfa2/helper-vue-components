@@ -7,6 +7,9 @@
         props: {
             carousel_items: {
                 type: Array
+            },
+            carousel_buttons: {
+                type: Array
             }
         }
     }

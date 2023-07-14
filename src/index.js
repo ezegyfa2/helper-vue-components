@@ -296,6 +296,12 @@ export default {
             Vue,
             'helper-vue-components/Carousel/Component.vue'
         );
+        registerVueComponent(
+            'carousel-button',
+            require('./Buttons/CarouselButton/Component.vue').default,
+            Vue,
+            'helper-vue-components/Buttons/CarouselButton/Component.vue'
+        );
 
         Vue.component('VSelect', require('./Form/VSelect/Component.vue').default);
         require('./Form/FormItems/register.js').default.install(Vue);
