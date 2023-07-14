@@ -80,18 +80,6 @@ export default {
             'helper-vue-components/Pages/Page/Component.vue'
         );
         registerVueComponent(
-            'page-with-facebook-events',
-            require('./Pages/PageWithFacebookEvents/Component.vue').default,
-            Vue,
-            'helper-vue-components/Pages/Page/Component.vue'
-        );
-        registerVueComponent(
-            'landing-page',
-            require('./Pages/LandingPage/Component.vue').default,
-            Vue,
-            'helper-vue-components/Pages/LandingPage/Component.vue'
-        );
-        registerVueComponent(
             'navigation-link',
             require('./NavigationBar/NavigationLinks/NavigationLink/Component.vue').default,
             Vue,
@@ -291,10 +279,16 @@ export default {
             'helper-vue-components/Pagintation/BootstrapPagination/Item/Component.vue'
         );
         registerVueComponent(
-            'center-content',
-            require('./CenterContent/Component.vue').default,
+            'centered-content',
+            require('./Containers/CenteredContent/Component.vue').default,
             Vue,
-            'helper-vue-components/CenterContent/Component.vue'
+            'helper-vue-components/Containers/CenteredContent/Component.vue'
+        );
+        registerVueComponent(
+            'section-container',
+            require('./Containers/Section/Component.vue').default,
+            Vue,
+            'helper-vue-components/Containers/Section/Component.vue'
         );
         registerVueComponent(
             'carousel',

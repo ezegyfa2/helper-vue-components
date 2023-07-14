@@ -5,7 +5,7 @@
 <script>
     export default {
         props: {
-            center_content_sections: {
+            content_sections: {
                 type: Array
             }
         }

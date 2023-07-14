@@ -24,7 +24,6 @@
                 template_type_name: this.template_type_name,
                 params: this.params
             }
-            console.log(JSON.stringify(this.replaceConfigTemplates(templateToCompile)))
             this.compiledTemplate = this.replaceConfigTemplates(templateToCompile)
         },
         computed: {
@@ -122,7 +121,7 @@
                 }
                 else if (typeof(template) == 'object') {
                     if ('array_data' in template) {
-                        return this.createArrayTemplate(template, params[template.array_data], template.array_data, paramPrefix)
+                        return this.createArrayTemplate(template, params[template.array_data], template.array_data)
                     }
                     else {
                         let replaceTemplate = JSON.parse(JSON.stringify(template))
@@ -144,16 +143,15 @@
                     return this.replaceUpperTemplateParams(templateValue, params, paramPrefix)
                 }
             },
-            createArrayTemplate(template, arrayParam, arrayParamName, paramPrefix) {
+            createArrayTemplate(template, arrayParam, arrayParamName) {
                 if (arrayParam && Array.isArray(arrayParam)) {
                     let replaceTemplate = JSON.parse(JSON.stringify(template))
                     delete replaceTemplate.array_data
                     delete replaceTemplate.merge_to_parent
-                    let self = this
                     return arrayParam.map((param) => {
                         let configParam = {}
                         configParam[arrayParamName] = param
-                        return self.replaceUpperTemplateParams(replaceTemplate, configParam, paramPrefix)
+                        return this.replaceUpperTemplateParams(replaceTemplate, configParam, '++')
                     })
                 }
                 else {
