@@ -4,9 +4,10 @@
     .carousel-inner
         .carousel-item(v-for='carousel_item in carousel_items' :class="{ active: carousel_item.isActive }")
             img.d-block.w-100(:src='carousel_item.src' :alt='carousel_item.alt')
-    a.carousel-control-prev(href='#carouselIndicators' role='button' data-slide='prev')
-        span.carousel-control-prev-icon(aria-hidden='true')
-        span.visually-hidden Previous
-    a.carousel-control-next(href='#carouselIndicators' role='button' data-slide='next')
-        span.carousel-control-next-icon(aria-hidden='true')
-        span.visually-hidden Next
+    carousel-button(
+        v-if='carousel_buttons'
+        v-for='carousel_button in carousel_buttons'
+        :dataSlideTitle = 'carousel_button.dataSlideTitle'
+        :title = 'carousel_button.title'
+        :key='carousel_button.title'
+    )
