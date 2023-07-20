@@ -173,18 +173,6 @@ export default {
             'helper-vue-components/DevelopmentTest/Child.vue'
         );
         registerVueComponent(
-            'ajax-component',
-            require('./AjaxComponent.vue').default,
-            Vue,
-            'helper-vue-components/AjaxComponent.vue'
-        );
-        registerVueComponent(
-            'ajax-table',
-            require('./AjaxTable.vue').default,
-            Vue,
-            'helper-vue-components/AjaxTable.vue'
-        );
-        registerVueComponent(
             'right-content',
             require('./RightContent/Component.vue').default,
             Vue,

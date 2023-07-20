@@ -259,6 +259,7 @@
                     data: this.data_infos
                 }).done((data) => {
                     if (Array.isArray(data)) {
+                        this.options = data
                         this.$emit('update:options', data)
                     }
                 })
