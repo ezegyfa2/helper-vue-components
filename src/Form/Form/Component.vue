@@ -38,7 +38,7 @@
                 if (this.formItemTypePrefix) {
                     return this.formItemTypePrefix + '-' + formItemType
                 }
-                else if (this.formItemConvertTypes[formItem.type]) {
+                else if (this.formItemConvertTypes[formItemType]) {
                     return this.formItemConvertTypes[formItemType]
                 }
                 else {
