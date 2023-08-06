@@ -1,4 +1,4 @@
 a.d-flex.align-items-center(:href='url')
-    i(v-bind:class='icon_class')
+    i(v-if='icon_class' v-bind:class='icon_class')
     span.content
         | {{ content }} 
