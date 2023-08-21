@@ -30,7 +30,12 @@
         },
         computed: {
             convertedFormItemSections() {
-                return this.convertFormItemSections(this.form_item_sections)
+                return this.form_item_sections.map(formItemSection => {
+                    return {
+                        type: this.getConvertedType(formItemSection.type),
+                        data: formItemSection.data
+                    }
+                })
             }
         },
         methods: {
