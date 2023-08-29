@@ -5,11 +5,11 @@
 <script>
     export default {
         props: {
-            carousel_items: {
-                type: Array
+            content_section: {
+                type: Object
             },
-            carousel_buttons: {
-                type: Array
+            background_image_source: {
+                type: String
             }
         }
     }

@@ -21,6 +21,9 @@
         "bootstrap-select": "*",
         "vue-select-picker-bootstrap": "^1.0.5",
         "jquery.redirect": "^1.2.0",
-        "vue-clickaway": "*"
+        "vue-clickaway": "*",
+        "multi-range-slider-vue": "*",
+        "bootstrap-vue": "*"
     }
 }
+

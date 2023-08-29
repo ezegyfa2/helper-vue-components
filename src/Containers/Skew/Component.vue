@@ -5,14 +5,8 @@
 <script>
     export default {
         props: {
-            url: {
-                type: String
-            },
-            image_url: {
-                type: String
-            },
-            image_alt: {
-                type: String
+            content_items: {
+                type: Array
             }
         }
     }

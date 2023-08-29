@@ -5,13 +5,10 @@
 <script>
     export default {
         props: {
-            url: {
+            src: {
                 type: String
             },
-            image_url: {
-                type: String
-            },
-            image_alt: {
+            alt: {
                 type: String
             }
         }
