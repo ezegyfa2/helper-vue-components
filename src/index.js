@@ -37,7 +37,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 export default {
     install(Vue) {
         require('js-helper-methods');
-        /*if (!window.originalMergeStrategy) {
+        if (!window.originalMergeStrategy) {
             window.originalMergeStrategy = Vue.config.optionMergeStrategies.data;
         }
         Vue.config.optionMergeStrategies.data = function strategy(
@@ -76,10 +76,14 @@ export default {
             } else {
                 return window.originalMergeStrategy(toVal, fromVal, vm);
             }
-        };*/
+        }
 
         Vue.use(BootstrapVue)
         Vue.use(IconsPlugin)
+        
+        require("bootstrap-css-only/css/bootstrap.min.css");
+        require("mdbvue/lib/css/mdb.min.css");
+        require("@fortawesome/fontawesome-free/css/all.min.css");
 
         /*registerVueComponent(
             'google-map',
