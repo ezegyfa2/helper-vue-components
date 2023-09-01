@@ -140,6 +140,12 @@ export default {
             'helper-vue-components/IconLinks/ButtonIconLink/Component.vue'
         )
         registerVueComponent(
+            'button-icon-link-light',
+            require('./IconLinks/ButtonIconLinkLight/Component.vue').default,
+            Vue,
+            'helper-vue-components/IconLinks/ButtonIconLinkLight/Component.vue'
+        )
+        registerVueComponent(
             'button-icon-link2',
             require('./IconLinks/ButtonIconLink2/Component.vue').default,
             Vue,
