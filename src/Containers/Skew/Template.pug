@@ -1,6 +1,6 @@
 b-container.main-container(fluid)
     b-row
-        b-col.column(v-for='contentItem in content_items')
+        b-col.skew-column(v-for='contentItem in content_items')
             .content
                 dynamic-component(v-bind:component_infos='contentItem.content_section')
             .background
