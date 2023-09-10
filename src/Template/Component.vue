@@ -6,7 +6,8 @@
     export default {
         props: {
             params: {
-                type: Array|Object
+                type: Array|Object,
+                designIgnore: true
             },
             template_type_name: {
                 type: String

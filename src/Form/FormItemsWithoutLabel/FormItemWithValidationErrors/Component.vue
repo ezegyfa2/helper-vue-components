@@ -6,10 +6,12 @@
     export default {
         props: {
             validation_errors: {
-                type: Array
+                type: Array,
+                itemType: String
             },
             saved_template_names: {
-                type: Array
+                type: Array,
+                itemType: String
             }
         },
         computed: {
