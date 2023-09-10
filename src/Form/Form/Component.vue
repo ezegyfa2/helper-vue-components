@@ -30,7 +30,12 @@
         },
         computed: {
             convertedFormItemSections() {
-                return this.convertFormItemSections(this.form_item_sections)
+                return this.form_item_sections.map(formItemSection => {
+                    return {
+                        type: this.getConvertedType(formItemSection.type),
+                        data: formItemSection.data
+                    }
+                })
             }
         },
         methods: {
@@ -38,7 +43,7 @@
                 if (this.formItemTypePrefix) {
                     return this.formItemTypePrefix + '-' + formItemType
                 }
-                else if (this.formItemConvertTypes[formItem.type]) {
+                else if (this.formItemConvertTypes[formItemType]) {
                     return this.formItemConvertTypes[formItemType]
                 }
                 else {

@@ -22,6 +22,12 @@
             to_label: {
                 type: String
             },
+            min: {
+                type: Number
+            },
+            max: {
+                type: Number
+            },
             from_value: {
                 type: String|Number
             },
@@ -41,28 +47,9 @@
                 }
             }
         },
-        computed: {
-            fromName() {
-                return 'from_' + this.name
-            },
-            toName() {
-                return 'to_' + this.name
-            }
-        },
         methods: {
-            changeFromValue(newFromValue) {
-                if (typeof newFromValue !== 'undefined' && newFromValue !== null && newFromValue !== '') {
-                    this.$nextTick(() => {
-                        this.$emit('update:from_value', parseInt(newFromValue))
-                    })
-                }
-            },
-            changeToValue(newToValue) {
-                if (typeof newToValue !== 'undefined' && newToValue !== null && newToValue !== '') {
-                    this.$nextTick(() => {
-                        this.$emit('update:to_value', parseInt(newToValue))
-                    })
-                }
+            updateValues(newValues) {
+                console.log(newValues)
             }
         }
     }

@@ -1,0 +1,9 @@
+b-carousel(
+    :interval="4000"
+    controls
+    indicators
+)
+    dynamic-component(
+        v-for='slideSection in slide_sections' 
+        v-bind:component_infos='slideSection'
+    )

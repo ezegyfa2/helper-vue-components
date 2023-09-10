@@ -5,19 +5,12 @@
 <script>
     export default {
         props: {
-            url: {
+            dataSlideTitle: {
                 type: String
             },
-            image_url: {
+            title: {
                 type: String
             },
-            image_alt: {
-                type: String
-            }
         }
     }
 </script>
-
-<style lang="scss" scoped>
-    @import "Style.scss";
-</style>

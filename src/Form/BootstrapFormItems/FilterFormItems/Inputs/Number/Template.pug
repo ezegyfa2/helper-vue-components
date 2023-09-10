@@ -1,17 +1,15 @@
 form-item-with-label(
     v-bind:label='label'
+    v-bind:validation_errors='validation_errors'
 )
-    bootstrap-number-input(
-        v-bind:name='fromName'
-        v-bind:label='from_label'
-        v-bind:value='from_value'
-        v-on:update:value='changeFromValue'
-        v-bind:validation_errors='from_validation_errors'
-    )
-    bootstrap-number-input(
-        v-bind:name='toName'
-        v-bind:label='to_label'
-        v-bind:value='to_value'
-        v-on:update:value='changeToValue'
-        v-bind:validation_errors='to_validation_errors'
+    range-slider(
+        ref='sli' 
+        v-bind:min="min"
+        v-bind:max="max"
+        v-bind:ruler="false"
+        v-bind:label="false"
+        v-bind:minValue="from_value"
+        v-bind:maxValue="to_value"
+        @input="updateValues"
+        style="border: none; color: black"
     )

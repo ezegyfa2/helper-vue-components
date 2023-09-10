@@ -32,6 +32,8 @@ window.mergeComponentClasses = (componentClasses) => {
     return currentComponentClasses;
 };
 
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
 export default {
     install(Vue) {
         require('js-helper-methods');
@@ -49,110 +51,130 @@ export default {
                 fromVal &&
                 typeof fromVal === 'function'
             ) {
-                return () => {
-                    let originalData = toVal();
-                    let newData = fromVal();
-                    let mergedData = window.originalMergeStrategy(toVal, fromVal, vm);
-                    let data = mergedData();
-                    if ('addedClasses' in originalData && 'addedClasses' in newData) {
-                        data.addedClasses = mergeComponentClasses([
-                            originalData.addedClasses,
-                            newData.addedClasses,
-                        ]);
+                try {
+                    // Test parameters
+                    toVal()
+                    fromVal()
+                    
+                    return () => {
+                        let originalData = toVal()
+                        let newData = fromVal()
+                        let mergedData = window.originalMergeStrategy(toVal, fromVal, vm)
+                        let data = mergedData()
+                        if ('addedClasses' in originalData && 'addedClasses' in newData) {
+                            data.addedClasses = mergeComponentClasses([
+                                originalData.addedClasses,
+                                newData.addedClasses,
+                            ]);
+                        }
+                        return data;
                     }
-                    return data;
-                };
+                }
+                catch (error) {
+                    return window.originalMergeStrategy(toVal, fromVal, vm)
+                }
             } else {
                 return window.originalMergeStrategy(toVal, fromVal, vm);
             }
-        };
+        }
 
+        Vue.use(BootstrapVue)
+        Vue.use(IconsPlugin)
+        
+        require("bootstrap-css-only/css/bootstrap.min.css");
+        require("mdbvue/lib/css/mdb.min.css");
+        require("@fortawesome/fontawesome-free/css/all.min.css");
+
+        /*registerVueComponent(
+            'google-map',
+            require('vue-google-maps-ui').default,
+            Vue,
+        )*/
+        registerVueComponent(
+            'range-slider',
+            require('multi-range-slider-vue').default,
+            Vue,
+        )
         registerVueComponent(
             'dynamic-template',
             require('./Template/Component.vue').default,
             Vue,
             'helper-vue-components/Template/Component.vue'
-        );
+        )
         registerVueComponent(
             'page',
             require('./Pages/Page/Component.vue').default,
             Vue,
             'helper-vue-components/Pages/Page/Component.vue'
-        );
-        registerVueComponent(
-            'page-with-facebook-events',
-            require('./Pages/PageWithFacebookEvents/Component.vue').default,
-            Vue,
-            'helper-vue-components/Pages/Page/Component.vue'
-        );
-        registerVueComponent(
-            'landing-page',
-            require('./Pages/LandingPage/Component.vue').default,
-            Vue,
-            'helper-vue-components/Pages/LandingPage/Component.vue'
-        );
+        )
         registerVueComponent(
             'navigation-link',
             require('./NavigationBar/NavigationLinks/NavigationLink/Component.vue').default,
             Vue,
             'helper-vue-components/NavigationBar/NavigationLinks/NavigationLink/Component.vue'
-        );
+        )
         registerVueComponent(
             'dropdown-navigation-link',
             require('./NavigationBar/NavigationLinks/DropdownNavigationLink/NavigationLink/Component.vue')
                 .default,
             Vue,
             'helper-vue-components/NavigationBar/NavigationLinks/DropdownNavigationLink/NavigationLink/Component.vue'
-        );
+        )
         registerVueComponent(
             'black-footer',
             require('./Footer/BlackFooter/Component.vue').default,
             Vue,
             'helper-vue-components/Footer/BlackFooter/Component.vue'
-        );
+        )
 
         registerVueComponent(
             'vue-link',
             require('./Link/Component.vue').default,
             Vue,
             'helper-vue-components/Link/Component.vue'
-        );
+        )
         registerVueComponent(
             'button-icon-link',
             require('./IconLinks/ButtonIconLink/Component.vue').default,
             Vue,
             'helper-vue-components/IconLinks/ButtonIconLink/Component.vue'
-        );
+        )
+        registerVueComponent(
+            'button-icon-link-light',
+            require('./IconLinks/ButtonIconLinkLight/Component.vue').default,
+            Vue,
+            'helper-vue-components/IconLinks/ButtonIconLinkLight/Component.vue'
+        )
         registerVueComponent(
             'button-icon-link2',
             require('./IconLinks/ButtonIconLink2/Component.vue').default,
             Vue,
             'helper-vue-components/IconLinks/ButtonIconLink2/Component.vue'
-        );
+        )
         registerVueComponent(
             'rounded-icon-link',
             require('./IconLinks/RoundedIconLink/Component.vue').default,
             Vue,
             'helper-vue-components/IconLinks/RoundedIconLink/Component.vue'
-        );
+        )
         registerVueComponent(
             'icon-link-with-right-text',
             require('./IconLinks/IconWithRightText/Component.vue').default,
             Vue,
             'helper-vue-components/IconLinks/IconWithRightText/Component.vue'
-        );
+        )
         registerVueComponent(
             'wertically-icon-links',
             require('./IconLinks/WerticallyIconLinks/Component.vue').default,
             Vue,
             'helper-vue-components/IconLinks/WerticallyIconLinks/Component.vue'
-        );
+        )
         registerVueComponent(
             'delete-icon-link',
             require('./IconLinks/DeleteIconLink/Component.vue').default,
             Vue,
             'helper-vue-components/IconLinks/DeleteIconLink/Component.vue'
-        );
+        )
         registerVueComponent(
             'edit-icon-link',
             require('./IconLinks/EditIconLink/Component.vue').default,
@@ -183,18 +205,6 @@ export default {
             require('./DevelopmentTest/Child.vue').default,
             Vue,
             'helper-vue-components/DevelopmentTest/Child.vue'
-        );
-        registerVueComponent(
-            'ajax-component',
-            require('./AjaxComponent.vue').default,
-            Vue,
-            'helper-vue-components/AjaxComponent.vue'
-        );
-        registerVueComponent(
-            'ajax-table',
-            require('./AjaxTable.vue').default,
-            Vue,
-            'helper-vue-components/AjaxTable.vue'
         );
         registerVueComponent(
             'right-content',
@@ -289,6 +299,56 @@ export default {
             require('./Pagintation/BootstrapPagination/Item/Component.vue').default,
             Vue,
             'helper-vue-components/Pagintation/BootstrapPagination/Item/Component.vue'
+        );
+        registerVueComponent(
+            'centered-content',
+            require('./Containers/CenteredContent/Component.vue').default,
+            Vue,
+            'helper-vue-components/Containers/CenteredContent/Component.vue'
+        );
+        registerVueComponent(
+            'section-container',
+            require('./Containers/Section/Component.vue').default,
+            Vue,
+            'helper-vue-components/Containers/Section/Component.vue'
+        );
+        registerVueComponent(
+            'skew-container',
+            require('./Containers/Skew/Component.vue').default,
+            Vue,
+            'helper-vue-components/Containers/Skew/Component.vue'
+        );
+
+        registerVueComponent(
+            'carousel',
+            require('./Carousel/Carousel/Component.vue').default,
+            Vue,
+            'helper-vue-components/Carousel/Carousel/Component.vue'
+        );
+        registerVueComponent(
+            'carousel-button',
+            require('./Buttons/CarouselButton/Component.vue').default,
+            Vue,
+            'helper-vue-components/Buttons/CarouselButton/Component.vue'
+        );
+        registerVueComponent(
+            'dynamic-zoom-carousel-slide',
+            require('./Carousel/DynamicZoomCarouselSlide/Component.vue').default,
+            Vue,
+            'helper-vue-components/Carousel/DynamicZoomCarouselSlide/Component.vue'
+        );
+        registerVueComponent(
+            'zoom-carousel-slide',
+            require('./Carousel/ZoomCarouselSlide/Component.vue').default,
+            Vue,
+            'helper-vue-components/Carousel/ZoomCarouselSlide/Component.vue'
+        );
+        
+        registerVueComponent(
+            'height-fit-image',
+            require('./HeightFitImage/Component.vue').default,
+            Vue,
+            'electrician-vue-components/src/HeightFitImage/Component.vue'
         );
 
         Vue.component('VSelect', require('./Form/VSelect/Component.vue').default);

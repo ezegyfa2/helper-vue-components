@@ -1,0 +1,3 @@
+a(href='#carouselIndicators' role='button' :class="[dataSlideTitle == 'prev' ? 'carousel-control-prev' : 'carousel-control-next']" :data-slide='dataSlideTitle')
+    span(:class="[dataSlideTitle == 'prev' ? 'carousel-control-prev-icon' : 'carousel-control-next-icon']" aria-hidden='true')
+    span.visually-hidden(:class="[dataSlideTitle == 'prev' ? '' : 'order-lg-first']") {{ title }}

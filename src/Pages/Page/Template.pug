@@ -1,5 +1,6 @@
 div
-    dynamic-component(v-bind:component_infos='navbar_section')
+    dynamic-component(v-bind:component_infos='navigation_bar_section')
+    dynamic-component(v-bind:component_infos='header_section')
     dynamic-component(
         v-for='success_message_section in success_message_sections'
         v-bind:component_infos='success_message_section'
