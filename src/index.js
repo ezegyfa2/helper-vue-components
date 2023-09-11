@@ -326,12 +326,6 @@ export default {
             'helper-vue-components/Carousel/Carousel/Component.vue'
         );
         registerVueComponent(
-            'carousel-slide',
-            require('./Carousel/CarouselSlide/Component.vue').default,
-            Vue,
-            'helper-vue-components/Carousel/CarouselSlide/Component.vue'
-        );
-        registerVueComponent(
             'carousel-button',
             require('./Buttons/CarouselButton/Component.vue').default,
             Vue,
