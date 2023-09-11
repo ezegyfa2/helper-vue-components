@@ -1,5 +1,5 @@
 <template lang="pug">
-    include Template.pug
+include Template.pug
 </template>
 
 <script>
