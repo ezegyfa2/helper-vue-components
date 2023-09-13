@@ -77,6 +77,11 @@
                 lastValueChangeTime: Date.now()
             };
         },
+        mounted() {
+            if (!this.options || this.options.length == 0) {
+                this.refreshOptions('')
+            }
+        },
         computed: {
             title() {
                 return this.selectedValue

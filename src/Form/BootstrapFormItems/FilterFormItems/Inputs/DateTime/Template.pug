@@ -1,5 +1,6 @@
 form-item-with-order(
     v-bind:label='label'
+    v-on:update:order='(newOrder) => { this.$emit("update:order", newOrder) }'
     v-bind:validation_errors='validation_errors'
 )
     input.form-item-control(

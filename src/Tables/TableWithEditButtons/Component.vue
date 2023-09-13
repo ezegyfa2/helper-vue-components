@@ -85,9 +85,13 @@
             },
             filterOptionsUpdated(filterSection, newValue) {
                 filterSection.data.options = newValue
-                console.log('options')
                 if (newValue !== null && typeof newValue !== 'undefined') {
-                    console.log(this.filter_sections)
+                    this.$emit('update:filter_sections', this.filter_sections)
+                }
+            },
+            orderUpdated(filterSection, newValue) {
+                filterSection.data.order = newValue
+                if (newValue !== null && typeof newValue !== 'undefined') {
                     this.$emit('update:filter_sections', this.filter_sections)
                 }
             },

@@ -34,13 +34,7 @@
             to_value: {
                 type: String|Number
             },
-            from_validation_errors: {
-                type: Array,
-                default() {
-                    return []
-                }
-            },
-            to_validation_errors: {
+            validation_errors: {
                 type: Array,
                 default() {
                     return []

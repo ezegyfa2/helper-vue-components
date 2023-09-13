@@ -8,6 +8,5 @@ export default {
 		registerVueComponent(prefix + '-phone-input', require('./Inputs/Phone/Component.vue').default, Vue)
 		registerVueComponent(prefix + '-datetime-input', require('./Inputs/DateTime/Component.vue').default, Vue)
 		registerVueComponent(prefix + '-select', require('./Select/Component.vue').default, Vue)
-		registerVueComponent(prefix + '-textarea', require('./TextArea/Component.vue').default, Vue)
     }
 }
