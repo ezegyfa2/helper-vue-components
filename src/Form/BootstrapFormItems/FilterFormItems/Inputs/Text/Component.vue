@@ -10,11 +10,6 @@
         mixins: [
             TextInput,
             BootstrapClassAdder,
-        ],
-        props: {
-            order: {
-                type: String
-            }
-        }
+        ]
     }
 </script>

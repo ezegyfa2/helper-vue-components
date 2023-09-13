@@ -36,7 +36,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 export default {
     install(Vue) {
-        require('js-helper-methods');
+        require('js-helper-methods/index');
         if (!window.originalMergeStrategy) {
             window.originalMergeStrategy = Vue.config.optionMergeStrategies.data;
         }
@@ -97,9 +97,8 @@ export default {
         )
         registerVueComponent(
             'dynamic-template',
-            require('./Template/Component.vue').default,
-            Vue,
-            'helper-vue-components/Template/Component.vue'
+            require('./DynamicTemplate/Component.vue').default,
+            Vue
         )
         registerVueComponent(
             'page',

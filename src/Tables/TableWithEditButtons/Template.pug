@@ -17,6 +17,7 @@
                         v-on:update:from_value='(newValue) => { filterFromValueUpdated(filterSection, newValue) }'
                         v-on:update:to_value='(newValue) => { filterToValueUpdated(filterSection, newValue) }'
                         v-on:update:options='(newValue) => { filterOptionsUpdated(filterSection, newValue) }'
+                        v-on:update:order='(newValue) => { orderUpdated(filterSection, newValue) }'
                     )
                 th
         tbody
