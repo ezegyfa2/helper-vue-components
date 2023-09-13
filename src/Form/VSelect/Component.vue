@@ -254,6 +254,7 @@
             },
             refreshOptions(searchedText) {
                 this.data_infos['searched-text'] = searchedText
+                this.data_infos['_token'] = getCsrfToken()
                 $.post({
                     url: this.data_url,
                     data: this.data_infos

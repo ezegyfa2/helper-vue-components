@@ -12,7 +12,7 @@ form-item-with-label(
         v-bind:data_url='data_url'
         v-bind:data_infos='data_infos'
         v-on:update:value='(newValue) => { this.$emit("update:value", newValue) }'
-        v-on:update:options='(newOptions) => { this.$emit("update:options", newValnewOptionsue) }'
+        v-on:update:options='(newOptions) => { this.$emit("update:options", newOptions) }'
         v-bind:class='invalidClass'
         v-bind:id='formItemId'
     )
