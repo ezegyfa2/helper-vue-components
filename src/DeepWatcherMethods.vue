@@ -25,19 +25,11 @@
             },
             changeDataValue(dataName, newValue) {
                 if (this.$options.propsData[dataName]) {
-                    this[dataName] = this.cloneValue(newValue)
+                    this[dataName] = structuredClone(newValue)
                     //this.$emit('update:' + dataName, newValue)
                 }
                 else {
-                    this[dataName] = this.cloneValue(newValue)
-                }
-            },
-            cloneValue(value) {
-                if (value) {
-                    return JSON.parse(JSON.stringify(value))
-                }
-                else {
-                    return value
+                    this[dataName] = structuredClone(newValue)
                 }
             }
         }

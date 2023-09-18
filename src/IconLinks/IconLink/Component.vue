@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import ClassAdder from '../../ClassAdder.vue'
+    import ClassAdder from 'helper-vue-components/ClassAdder/Component.vue'
 
     export default {
         mixins: [

@@ -1,5 +1,7 @@
 export default {
     install(Vue) {
+        require('../../FormItemWithValidationErrors').default.install(Vue)
+
         registerVueComponent(
             'form-item-without-label-number-input',
             require('./Component.vue').default,

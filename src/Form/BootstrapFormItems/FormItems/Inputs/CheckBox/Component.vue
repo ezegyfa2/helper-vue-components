@@ -1,6 +1,6 @@
 <script>
-    import CheckBoxInput from './../../../../FormItems/Inputs/CheckBox/Component.vue'
-    import ClassAdder from './../../../../../ClassAdder.vue'
+    import CheckBoxInput from '../../../../FormItems/Inputs/CheckBox/Component.vue'
+    import ClassAdder from 'helper-vue-components/ClassAdder/Component.vue'
 
     export default {
         mixins: [

@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import FormItemWithValue from './../../BasicFormItems/FormItemWithValue.vue'
+    import FormItemWithValue from '../../BasicFormItems/FormItemWithValue.vue'
 
     export default {
         mixins: [

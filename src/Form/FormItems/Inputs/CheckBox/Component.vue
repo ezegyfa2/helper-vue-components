@@ -3,8 +3,8 @@
 </template>
 
 <script>
-    import CheckBoxInput from './../../../FormItemsWithoutLabel/Inputs/CheckBox/Component.vue'
-    import FormItemWithLabel from './../../FormItemWithLabel/Component.vue'
+    import CheckBoxInput from '../../../FormItemsWithoutLabel/Inputs/CheckBox/Component.vue'
+    import FormItemWithLabel from '../../FormItemWithLabel/Component.vue'
 
     export default {
         mixins: [

@@ -4,7 +4,7 @@
 
 <script>
     import DateTimeInput from './../../../../FormItems/Inputs/DateTime/Component.vue'
-    import BootstrapClassAdder from './../../../BootstrapClassAdder.vue'
+    import BootstrapClassAdder from './../../../BootstrapClassAdder/Component.vue'
 
     export default {
         mixins: [

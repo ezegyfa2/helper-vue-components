@@ -1,21 +1,7 @@
-@import "../../../../dynamic-web-vue-components/src/globals.scss";
-
 .navbar-collapse {
     flex-direction: row-reverse;
 }
 
 .navbar-toggler:focus {
     box-shadow: none;
-}
-
-.btn, .btn:disabled {
-    color: #fff;
-    background-color: $primaryColor;
-    border-color: $primaryColor;
-}
-
-.btn:hover {
-    color: $primaryColor;
-    background-color: $baseColor2;
-    border-color: $baseColor2;
 }

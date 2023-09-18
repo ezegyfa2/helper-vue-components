@@ -3,7 +3,14 @@
 </template>
 
 <script>
+    import ReactiveComponentSize from 'helper-vue-components/ReactiveProperties/ComponentSize/Component.vue'
+    import ReactiveWindowSize from 'helper-vue-components/ReactiveProperties/WindowSize/Component.vue'
+
     export default {
+        mixins: [
+            ReactiveComponentSize,
+            ReactiveWindowSize,
+        ],
         props: {
             icon_links_section: {
                 type: Object
@@ -13,6 +20,16 @@
             },
             copyright: {
                 type: Object
+            }
+        },
+        computed: {
+            fixedClass() {
+                if (this.bottomPosition < this.windowSize.height) {
+                    return 'fixed'
+                }
+                else {
+                    return ''
+                }
             }
         }
     }

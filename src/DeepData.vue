@@ -29,7 +29,7 @@
                                 }
                             })
                             if (hasChages) {
-                                self[subObjectName] = JSON.parse(JSON.stringify(subDataArray))
+                                self[subObjectName] = structuredClone(subDataArray)
                             }
                         }
                         else {
@@ -53,7 +53,7 @@
                                 }
                             })
                             if (hasChages) {
-                                self[subObjectName] = JSON.parse(JSON.stringify(subDataArray))
+                                self[subObjectName] = structuredClone(subDataArray)
                             }
                             self.refreshDataValue(subObjectName)
                         }

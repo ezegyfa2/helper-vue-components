@@ -25,6 +25,7 @@
                 params: this.params
             }
             this.compiledTemplate = this.replaceConfigTemplates(templateToCompile)
+            this.compiledTemplate = this.HTMLDecodeTemplate(this.compiledTemplate)
         },
         computed: {
             compiledTemplateText() {
@@ -124,7 +125,7 @@
                         return this.createArrayTemplate(template, params[template.array_data], template.array_data)
                     }
                     else {
-                        let replaceTemplate = JSON.parse(JSON.stringify(template))
+                        let replaceTemplate = structuredClone(template)
                         for (const [key, value] of Object.entries(replaceTemplate)) {
                             replaceTemplate[key] = this.replaceUpperTemplateParams(value, params, paramPrefix)
                         }
@@ -145,7 +146,7 @@
             },
             createArrayTemplate(template, arrayParam, arrayParamName) {
                 if (arrayParam && Array.isArray(arrayParam)) {
-                    let replaceTemplate = JSON.parse(JSON.stringify(template))
+                    let replaceTemplate = structuredClone(template)
                     delete replaceTemplate.array_data
                     delete replaceTemplate.merge_to_parent
                     return arrayParam.map((param) => {
@@ -174,6 +175,31 @@
                 }
                 else {
                     return value
+                }
+            },
+            HTMLDecodeTemplate(template) {
+                if (template == null) {
+                    return null
+                }
+                else if (Array.isArray(template)) {
+                    let arrayTemplate = []
+                    template.forEach((templateValue) => {
+                        arrayTemplate.push(this.HTMLDecodeTemplate(templateValue))
+                    })
+                    return arrayTemplate
+                }
+                else if (typeof(template) == 'object') {
+                    let replaceTemplate = structuredClone(template)
+                    for (const [key, value] of Object.entries(replaceTemplate)) {
+                        replaceTemplate[key] = this.HTMLDecodeTemplate(value)
+                    }
+                    return replaceTemplate
+                }
+                else if (typeof(template) == 'string') {
+                    return he.decode(template)
+                }
+                else {
+                    return template
                 }
             }
         }

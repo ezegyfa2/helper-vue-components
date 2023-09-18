@@ -1,6 +1,6 @@
 <script>
-    import EmailInput from './../../../../FormItemsWithoutLabel/Inputs/Email/Component.vue'
-    import BootstrapClassAdder from './../../../BootstrapClassAdder.vue'
+    import EmailInput from '../../../../FormItemsWithoutLabel/Inputs/Email/Component.vue'
+    import BootstrapClassAdder from '../../../BootstrapClassAdder/Component.vue'
 
     export default {
         mixins: [

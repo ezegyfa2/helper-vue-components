@@ -1,6 +1,6 @@
 <script>
-    import TextArea from './../../../FormItemsWithoutLabel/TextArea/Component.vue'
-    import BootstrapClassAdder from './../../BootstrapClassAdder.vue'
+    import TextArea from '../../../FormItemsWithoutLabel/TextArea/Component.vue'
+    import BootstrapClassAdder from '../../BootstrapClassAdder/Component.vue'
 
     export default {
         mixins: [

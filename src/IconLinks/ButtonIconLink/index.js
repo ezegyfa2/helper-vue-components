@@ -1,7 +1,6 @@
 export default {
     install(Vue) {
-        require('../IconLink').install(Vue)
-        require('helper-vue-components/bootstrap-package')
+        require('../IconLink').default.install(Vue)
 
         registerVueComponent(
             'button-icon-link',

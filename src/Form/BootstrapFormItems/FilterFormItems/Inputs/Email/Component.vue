@@ -4,7 +4,7 @@
 
 <script>
     import EmailInput from './../../../../FormItems/Inputs/Email/Component.vue'
-    import BootstrapClassAdder from './../../../BootstrapClassAdder.vue'
+    import BootstrapClassAdder from './../../../BootstrapClassAdder/Component.vue'
 
     export default {
         mixins: [
