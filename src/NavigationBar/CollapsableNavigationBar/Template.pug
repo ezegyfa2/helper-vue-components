@@ -1,10 +1,13 @@
 nav.navbar.navbar-expand-lg.fixed-top(ref='mainNav')
     .container
-        a.navbar-brand(v-bind:href='title_url') {{ title }}
+        a.navbar-brand(v-if='title' v-bind:href='title_url') {{ title }}
+        dynamic-component(
+            v-bind:component_infos='brand_section'
+        )
         button.btn.navbar-toggler(
             type='button' 
-            data-bs-toggle='collapse' 
-            v-bind:data-bs-target='"#" + navigationBarId' 
+            data-toggle='collapse' 
+            v-bind:data-target='"#" + navigationBarId' 
             aria-controls='navbarResponsive' 
             aria-expanded='false' 
             aria-label='Toggle navigation'
@@ -12,8 +15,9 @@ nav.navbar.navbar-expand-lg.fixed-top(ref='mainNav')
             | Menu
             i.fas.fa-bars
         .collapse.navbar-collapse(v-bind:id='navigationBarId')
-            ul.navbar-nav
+            ul.navbar-nav.ms-auto.py-4.py-lg-0
                 dynamic-component(
-                    v-for='linkSection in link_sections' v-bind:key='linkSection.data.content'
+                    v-for='linkSection in link_sections' 
+                    v-bind:key='linkSection.data.content'
                     v-bind:component_infos='linkSection'
                 )

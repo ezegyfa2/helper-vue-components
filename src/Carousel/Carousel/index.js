@@ -1,8 +1,6 @@
-import { BCarousel } from 'bootstrap-vue'
-
 export default {
     install(Vue) {
-        Vue.component('b-carousel', BCarousel)
+        require('../DynamicCarousel').default.install(Vue)
 
         registerVueComponent(
             'carousel',

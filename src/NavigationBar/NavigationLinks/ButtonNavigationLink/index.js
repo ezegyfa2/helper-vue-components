@@ -1,7 +1,7 @@
 export default {
     install(Vue) {
         registerVueComponent(
-            'collapsable-navigation-bar',
+            'button-navigation-link',
             require('./Component.vue').default,
             Vue
         )

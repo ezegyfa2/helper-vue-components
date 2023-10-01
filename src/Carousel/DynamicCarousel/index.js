@@ -1,7 +1,7 @@
 export default {
     install(Vue) {
         registerVueComponent(
-            'collapsable-navigation-bar',
+            'dynamic-carousel',
             require('./Component.vue').default,
             Vue
         )

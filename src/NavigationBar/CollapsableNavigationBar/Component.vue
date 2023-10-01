@@ -3,12 +3,7 @@
 </template>
 
 <script>
-    import ClassAdder from 'helper-vue-components/ClassAdder/Component.vue'
-
     export default {
-        mixins: [
-            ClassAdder
-        ],
         props: {
             title: {
                 type: String
@@ -19,19 +14,9 @@
             link_sections: {
                 type: Array
             },
-            added_classes: {
-                type: Object,
-                default () {
-                    return {
-                        'ul.navbar-nav': [
-                            'ms-auto',
-                            'py-4',
-                            'py-lg-0',
-                        ]
-                    }
-                }
+            brand_section: {
+                type: Object
             }
-            
         },
         mounted() {
             var navbarShrink =  () => {
