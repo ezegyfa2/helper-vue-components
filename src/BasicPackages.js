@@ -1,5 +1,3 @@
-window.$ = window.jQuery = require('jquery');
-require('bootstrap')
 global.he = require('he')
 
 window.templates = {}

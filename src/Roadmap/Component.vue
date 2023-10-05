@@ -15,14 +15,6 @@
             },
             timeline_section: {
                 type: Object
-            },
-            added_classes: {
-                type: Object,
-                default () {
-                    return {
-                        '.content': 'text-uppercase'
-                    }
-                }
             }
         }
     }
