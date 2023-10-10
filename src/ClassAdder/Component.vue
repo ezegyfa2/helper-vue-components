@@ -77,6 +77,9 @@
                         this.addClassesToItems(this.$el, appendClasses)
                     }
                 }
+                else if (this.$el.nodeName == '#comment') {
+                    console.log('Added classes query returned comment node. Skipped query: ' + query)
+                }
                 else {
                     let selectedItems = this.$el.querySelectorAll(query)
                     this.addClassesToItems(selectedItems, appendClasses)
@@ -98,7 +101,7 @@
                         })
                     }
                     else {
-                        if (!items.classList.contains(appendClasses)) {
+                        if (items.classList && !items.classList.contains(appendClasses)) {
                             items.classList.add(appendClasses)
                         }
                     }
