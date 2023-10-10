@@ -26,6 +26,7 @@
             }
             this.compiledTemplate = this.replaceConfigTemplates(templateToCompile)
             this.compiledTemplate = this.HTMLDecodeTemplate(this.compiledTemplate)
+            console.log(this.compiledTemplate)
         },
         computed: {
             compiledTemplateText() {
