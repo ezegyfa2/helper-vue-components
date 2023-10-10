@@ -26,6 +26,7 @@
                 params: this.params
             }
             this.compiledTemplate = this.replaceConfigTemplates(templateToCompile)
+            console.log(this.compiledTemplate)
         },
         computed: {
             compiledTemplateText() {
