@@ -3,10 +3,6 @@ export default {
         require('helper-vue-components/Form/FormItemsWithoutLabel/Inputs/Number').default.install(Vue)
         require('../../../BootstrapClassAdder').default.install(Vue)
 
-        registerVueComponent(
-            'bootstrap-without-label-number-input',
-            require('./Component.vue').default,
-            Vue
-        );
+        Vue.component('bootstrap-without-label-number-input', () => import('./Component.vue'));
     }
 }

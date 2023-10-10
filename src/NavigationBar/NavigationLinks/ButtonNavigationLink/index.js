@@ -1,9 +1,5 @@
 export default {
     install(Vue) {
-        registerVueComponent(
-            'button-navigation-link',
-            require('./Component.vue').default,
-            Vue
-        )
+        Vue.component('button-navigation-link', () => import('./Component.vue'))
     }
 }

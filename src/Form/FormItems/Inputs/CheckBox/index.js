@@ -3,10 +3,6 @@ export default {
         require('../../../FormItemsWithoutLabel/Inputs/CheckBox').default.install(Vue)
         require('../../FormItemWithLabel').default.install(Vue)
 
-        registerVueComponent(
-            'form-item-checkbox-input',
-            require('./Component.vue').default,
-            Vue
-        );
+        Vue.component('form-item-checkbox-input', () => import('./Component.vue'));
     }
 }

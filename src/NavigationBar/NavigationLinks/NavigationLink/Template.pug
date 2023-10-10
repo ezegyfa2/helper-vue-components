@@ -1,2 +1,5 @@
 li.nav-item
-    a.nav-link(v-bind:href='url') {{ content }}
+    a.nav-link(
+        v-bind:href='url'
+        v-bind:tabindex='tab_index'
+    ) {{ content }}

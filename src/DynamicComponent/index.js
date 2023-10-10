@@ -1,9 +1,5 @@
 export default {
     install(Vue) {
-        registerVueComponent(
-            'dynamic-component',
-            require('./Component.vue').default,
-            Vue
-        )
+        Vue.component('dynamic-component', () => import('./Component.vue'))
     }
 }

@@ -1,5 +1,5 @@
 ul.timeline
-    dynamic-component(
-        v-for='timelineItem in timeline_item_sections'
-        v-bind:component_infos='timelineItem'
-    )
+    li(v-for='timelineItemSection in timeline_item_sections')
+        dynamic-component(
+            v-bind:component_infos='timelineItemSection'
+        )

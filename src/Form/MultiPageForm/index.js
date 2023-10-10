@@ -3,10 +3,6 @@ export default {
         require('../Form').default.install(Vue)
         require('helper-vue-components/CsrfInput').default.install(Vue)
 
-        registerVueComponent(
-            'multi-page-form',
-            require('./Component.vue').default,
-            Vue
-        )
+        Vue.component('multi-page-form', () => import('./Component.vue'))
     }
 }

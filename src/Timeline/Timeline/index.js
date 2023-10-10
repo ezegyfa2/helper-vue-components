@@ -1,9 +1,5 @@
 export default {
     install(Vue) {
-        registerVueComponent(
-            'timeline',
-            require('./Component.vue').default,
-            Vue
-        )
+        Vue.component('timeline', () => import('./Component.vue'))
     }
 }

@@ -22,6 +22,9 @@
             is_submit_button: {
                 type: Boolean,
                 default: false
+            },
+            aria_label: {
+                type: String
             }
         },
         computed: {

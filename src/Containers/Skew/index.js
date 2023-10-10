@@ -8,10 +8,6 @@ export default {
         Vue.component('b-row', BRow)
         Vue.component('b-col', BCol)
 
-        registerVueComponent(
-            'skew-container',
-            require('./Component.vue').default,
-            Vue
-        )
+        Vue.component('skew-container', () => import('./Component.vue'))
     }
 }

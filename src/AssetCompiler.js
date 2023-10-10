@@ -4,26 +4,10 @@ const fs = require('fs')
 const path = require('path')
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin')
 require('js-helper-methods/objectMethods.js')
+require('js-helper-methods/StringMethods.js')
 
 global.whiteAttributes = []
 global.extractedContents = []
-global.currentWebpackConfig = {
-    module: {
-        rules: [
-            {
-                test: /\.pug$/,
-                loader: 'pug-plain-loader'
-            },
-            {
-                test: /\.scss$/,
-                use: [
-                    'sass-loader'
-                ]
-            }
-        ]
-    },
-    plugins: []
-}
 
 global.compileAssets = (mix, packageName, templateNames) => {
     mix.webpackConfig(currentWebpackConfig)
@@ -36,19 +20,37 @@ global.compileAssets = (mix, packageName, templateNames) => {
 global.compileTemplateAssets = (mix, packageName, templateName) => {
     const templatePath = path.resolve('node_modules', packageName, 'src', templateName)
     changeMixConfig(mix, templatePath)
-    mix.sass('resources/sass/' + templateName + '.scss', 'public/css/')
-    mix.js('resources/js/' + templateName + '.js', 'public/js').vue()
-    mix.copy(path.join(templatePath, 'CompiledTemplate.json'), path.join('app/Templates', templateName + '.json'))
+    const lowerCaseTemplateName = templateName[0].toLowerCase() + templateName.slice(1)
+    mix.sass('resources/sass/' + lowerCaseTemplateName + '.scss', 'public/css/')
+    mix.js('resources/js/' + lowerCaseTemplateName + '.js', 'public/js').vue().sourceMaps()
+    mix.copy(path.join(templatePath, 'CompiledTemplate.json'), path.join('app/Templates', lowerCaseTemplateName + '.json'))
 }
 
 global.changeMixConfig = (mix, templatePath) => {
-    currentWebpackConfig.plugins[0] = new PurgeCSSPlugin({
+    const newPlugin = new PurgeCSSPlugin({
         paths: [ 'WhiteAttributes.html' ],
         safelist: {
             deep: getWhitelistItems(templatePath)
         }
     })
+    const currentPurgeCSSPlugin = getCurrentWebpackConfigPurgeCSSPlugin()
+    const currentPlugins = currentWebpackConfig.plugins
+    if (currentPurgeCSSPlugin) {
+        currentPlugins[currentPlugins.indexOf(currentPurgeCSSPlugin)] = newPlugin
+    }
+    else {
+        currentPlugins.push(newPlugin)
+    }
     mix.webpackConfig(currentWebpackConfig)
+}
+
+global.getCurrentWebpackConfigPurgeCSSPlugin = () => {
+    for(const plugin in currentWebpackConfig.plugins) {
+        if (plugin instanceof PurgeCSSPlugin) {
+            return plugin
+        }
+    }
+    return null
 }
 
 global.getWhitelistItems = (rootPath) => {
@@ -223,4 +225,39 @@ global.purgeCSSFromPug = (content) => {
         }
     }
     return selectors;
+}
+
+global.replaceComponentRegistrations = (folderPath) => {
+    fs.readdirSync(folderPath).forEach(fileName => {
+        const filePath = path.join(folderPath, fileName)
+        if (fs.lstatSync(filePath).isDirectory()) {
+            replaceComponentRegistrations(filePath)
+        }
+        else {
+            let fileContent = fs.readFileSync(filePath, 'utf8')
+            do {
+                fileContent = replaceComponentRegistration(fileContent)
+            }
+            while (fileContent.includes('registerVueComponent('))
+            fs.writeFileSync(filePath, fileContent)
+        }
+    })
+}
+
+global.replaceComponentRegistration = (fileContent) => {
+    let newContent = ''
+    let contentParts = fileContent.splitToFullParts('registerVueComponent(', 2)
+    newContent += contentParts[0]
+    if (contentParts.length > 1) {
+        contentParts = contentParts[1].splitToFullParts(')', 3)
+        //console.log(contentParts)
+        const rightPart = contentParts[2]
+        contentParts = contentParts[0].split(',')
+        let componentPart = 'Vue.component(' + contentParts[0].trim() + ', () => import(' 
+            + contentParts[1].replace('require(', '').trim() + '))'
+        componentPart = componentPart.replace("\r\n", '')
+        newContent += componentPart
+        newContent += rightPart
+    }
+    return newContent
 }

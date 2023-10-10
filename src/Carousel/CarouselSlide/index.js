@@ -4,10 +4,6 @@ export default {
     install(Vue) {
         Vue.component('b-carousel-slide', BCarouselSlide)
 
-        registerVueComponent(
-            'carousel-slide',
-            require('./Component.vue').default,
-            Vue
-        )
+        Vue.component('carousel-slide', () => import('./Component.vue'))
     }
 }

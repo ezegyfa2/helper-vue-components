@@ -16,6 +16,9 @@ include Template.pug
             url: {
                 type: String
             },
+            tab_index: {
+                type: Number
+            },
             added_classes: {
                 type: Object,
                 default () {

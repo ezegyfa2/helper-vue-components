@@ -1,9 +1,5 @@
 export default {
     install(Vue) {
-        registerVueComponent(
-            'vue-link',
-            require('./Component.vue').default,
-            Vue
-        )
+        Vue.component('vue-link', () => import('./Component.vue'))
     }
 }

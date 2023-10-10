@@ -3,6 +3,7 @@ component(
     v-bind:href='url' 
     v-on:click='() => { this.$emit("on_click") }'
     type='submit'
+    v-bind:aria-label='aria_label'
 )
     i(v-bind:class='icon_class')
     |  {{ content }}

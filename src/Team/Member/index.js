@@ -1,9 +1,5 @@
 export default {
     install(Vue) {
-        registerVueComponent(
-            'team-member',
-            require('./Component.vue').default,
-            Vue
-        )
+        Vue.component('team-member', () => import('./Component.vue'))
     }
 }

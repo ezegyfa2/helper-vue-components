@@ -1,9 +1,5 @@
 export default {
     install(Vue) {
-        registerVueComponent(
-            'section-container',
-            require('./Component.vue').default,
-            Vue
-        )
+        Vue.component('section-container', () => import('./Component.vue'))
     }
 }

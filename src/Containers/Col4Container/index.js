@@ -1,9 +1,5 @@
 export default {
     install(Vue) {
-        registerVueComponent(
-            'col4-container',
-            require('./Component.vue').default,
-            Vue
-        )
+        Vue.component('col4-container', () => import('./Component.vue'))
     }
 }
