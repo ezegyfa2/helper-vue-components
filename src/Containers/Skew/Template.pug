@@ -4,7 +4,7 @@ b-container.main-container(fluid)
             .content
                 dynamic-component(v-bind:component_infos='contentItem.content_section')
             .background
-                img.background-image(
+                vue-image.background-image(
                     v-bind:src='contentItem.background_image.src'
                     v-bind:alt='contentItem.background_image.alt'
                 )
