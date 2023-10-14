@@ -3,6 +3,7 @@ const purgePug = require('purgecss-from-pug')
 const fs = require('fs')
 const path = require('path')
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin')
+const { connect } = require('http2')
 require('js-helper-methods/objectMethods.js')
 require('js-helper-methods/StringMethods.js')
 
@@ -15,6 +16,7 @@ global.compileAssets = (mix, packageName, templateNames) => {
     templateNames.forEach(templateName => {
         compileTemplateAssets(mix, packageName, templateName)
     })
+    mix.compress()
 }
 
 global.compileTemplateAssets = (mix, packageName, templateName) => {
@@ -38,14 +40,17 @@ global.changeMixConfig = (mix, templatePath) => {
     if (currentPurgeCSSPlugin) {
         currentPlugins[currentPlugins.indexOf(currentPurgeCSSPlugin)] = newPlugin
     }
-    else {
+    else if (currentPlugins) {
         currentPlugins.push(newPlugin)
+    }
+    else {
+        currentWebpackConfig.plugins = [ newPlugin ]
     }
     mix.webpackConfig(currentWebpackConfig)
 }
 
 global.getCurrentWebpackConfigPurgeCSSPlugin = () => {
-    for(const plugin in currentWebpackConfig.plugins) {
+    for (const plugin in currentWebpackConfig.plugins) {
         if (plugin instanceof PurgeCSSPlugin) {
             return plugin
         }
@@ -141,6 +146,7 @@ global.collectContentRequiredPaths = (indexContent, rootPath) => {
 global.collectAddedClassesFromTemplate = (templatePath) => {
     let templateContent = fs.readFileSync(templatePath, 'utf8')
     templateContent = templateContent.replace('export default ', '')
+    console.log(templateContent)
     return collectAddedClasses(JSON.parse(templateContent))
 }
 
@@ -233,13 +239,16 @@ global.replaceComponentRegistrations = (folderPath) => {
         if (fs.lstatSync(filePath).isDirectory()) {
             replaceComponentRegistrations(filePath)
         }
-        else {
-            let fileContent = fs.readFileSync(filePath, 'utf8')
+        else if (path.extname(filePath) == 'js' || path.extname(filePath) == 'vue') {
+            const oldFileContent = fs.readFileSync(filePath, 'utf8')
+            let fileContent = oldFileContent
             do {
                 fileContent = replaceComponentRegistration(fileContent)
             }
             while (fileContent.includes('registerVueComponent('))
-            fs.writeFileSync(filePath, fileContent)
+            if (fileContent != oldFileContent) {
+                fs.writeFileSync(filePath, fileContent)
+            }
         }
     })
 }
@@ -260,4 +269,35 @@ global.replaceComponentRegistration = (fileContent) => {
         newContent += rightPart
     }
     return newContent
+}
+
+global.replaceImageCache = (cacheFilePath) => {
+    let newContent = ''
+    let cacheFileContent = fs.readFileSync(cacheFilePath, 'utf8')
+    let cacheFileContentParts = cacheFileContent.splitToFullParts('return', 2)
+    newContent += cacheFileContentParts[0] + 'return ' + getPHPFolderMap('public/images')
+    let rightParts = cacheFileContentParts[1].splitToFullParts(';', 2)
+    newContent += ';' + rightParts[1];
+    fs.writeFileSync('app/Http/ImageCache.php', newContent)
+}
+
+global.getPHPFolderMap = (folderPath) => {
+    let folderMap = getFolderMap(folderPath)
+    folderMap = JSON.stringify(folderMap, null, 4)
+    folderMap = folderMap.replaceAll('{', '[').replaceAll('}', ']').replaceAll(':', ' =>').replaceAll("\n", "\n        ")
+    return folderMap
+}
+
+global.getFolderMap = (folderPath) => {
+    let map = {}
+    fs.readdirSync(folderPath).forEach(fileName => {
+        const currentPath = path.join(folderPath, fileName)
+        if (fs.lstatSync(currentPath).isDirectory()) {
+            map[fileName] = getFolderMap(currentPath)
+        }
+        else {
+            map[parseFloat(path.parse(currentPath).name)] = true
+        }
+    })
+    return map
 }
