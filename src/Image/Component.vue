@@ -10,6 +10,10 @@
             },
             alt: {
                 type: String
+            },
+            lazy_load: {
+                type: Boolean,
+                default: true
             }
         },
         data() {

@@ -1,4 +1,5 @@
 img(
     v-bind:src='srcWithSize'
     v-bind:alt='alt'
+    v:bind:loading='lazy_load ? "lazy" : "eager"'
 )
