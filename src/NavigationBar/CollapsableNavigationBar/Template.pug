@@ -1,5 +1,5 @@
 nav.navbar.navbar-expand-lg.fixed-top(ref='mainNav')
-    .container
+    .container-fluid
         a.navbar-brand(v-if='title' v-bind:href='title_url') {{ title }}
         dynamic-component(
             v-bind:component_infos='brand_section'
