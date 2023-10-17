@@ -24,6 +24,9 @@
         mounted() {
             this.width = this.$el.offsetWidth
         },
+        updated() {
+            this.width = this.$el.offsetWidth
+        },
         computed: {
             srcWithSize() {
                 if (this.src && this.width) {
