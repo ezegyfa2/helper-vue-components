@@ -10,9 +10,7 @@
         },
         mounted() {
             this.updateSize()
-            window.addEventListener('resize', () => {
-                this.updateSize()
-            })
+            new ResizeObserver(this.updateSize).observe(this.$el)
         },
         computed: {
             bottomPosition() {
