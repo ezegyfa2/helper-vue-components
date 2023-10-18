@@ -33,6 +33,19 @@
                 }
             }
         },
+        data() {
+            return {
+                imageWidths: [
+                    327,
+                    377,
+                    609,
+                    720,
+                    772,
+                    173,
+                    352,
+                ]
+            }
+        },
         computed: {
             leftContentClass() {
                 if (this.is_inverted) {
