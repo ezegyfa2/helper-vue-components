@@ -16,7 +16,20 @@
             },
             contact_icons_section: {
                 type: Object
+            },
+        },
+        data() {
+            return {
+                imageWidths: [
+                    208,
+                    208,
+                    208,
+                    208,
+                    208,
+                    208,
+                    208,
+                ]
             }
-        }
+        },
     }
 </script>

@@ -6,7 +6,11 @@
             v-bind:component_infos='content_section'
         )
     .timeline-image
-        vue-image.rounded-circle.img-fluid(v-bind:src='image_url' v-bind:alt='image_alt')
+        vue-image.rounded-circle.img-fluid(
+            v-bind:widths='imageWidths'
+            v-bind:src='image_url'
+            v-bind:alt='image_alt'
+            )
     .timeline-panel.right-content(v-bind:class='rightContentClass')
         dynamic-component(
             v-for='content_section in content_sections'
