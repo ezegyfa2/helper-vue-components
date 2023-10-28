@@ -4,12 +4,12 @@
 
 <script>
     import ReactiveComponentSize from 'helper-vue-components/ReactiveProperties/ComponentSize/Component.vue'
-    import ReactiveWindowSize from 'helper-vue-components/ReactiveProperties/WindowSize/Component.vue'
+    import ImageSize from 'helper-vue-components/ImageSize/Component.vue'
 
     export default {
         mixins: [
             ReactiveComponentSize,
-            ReactiveWindowSize,
+            ImageSize,
         ],
         props: {
             src: {
@@ -30,7 +30,7 @@
             srcWithSize() {
                 if (this.src && this.width) {
                     if (this.widths) {
-                        return '/images/' + this.src + '/' + this.currentWidth + '.webp'
+                        return this.getCalculatedWidthUrl(this.widths, this.src)
                     }
                     else {
                         return 'get-image?path=' + this.src + '&width=' + this.width
@@ -41,43 +41,7 @@
                 }
             },
             currentWidth() {
-                if (this.widths.length > 8) {
-                    throw new Error('Invalid width length')
-                }
-                else if (this.windowSize.width > 2560) {
-                    return this.getWidth(7)
-                }
-                else if (this.windowSize.width > 1440) {
-                    return this.getWidth(6)
-                }
-                else if (this.windowSize.width > 1024) {
-                    return this.getWidth(5)
-                }
-                else if (this.windowSize.width > 768) {
-                    return this.getWidth(4)
-                }
-                else if (this.windowSize.width > 425) {
-                    return this.getWidth(3)
-                }
-                else if (this.windowSize.width > 375) {
-                    return this.getWidth(2)
-                }
-                else if (this.windowSize.width > 320) {
-                    return this.getWidth(1)
-                }
-                else {
-                    return this.getWidth(0)
-                }
-            }
-        },
-        methods: {
-            getWidth(withNumber) {
-                if (this.widths.length >= withNumber + 1) {
-                    return this.widths[withNumber]
-                }
-                else {
-                    return this.widths.last()
-                }
+                return this.getCalculatedWidth(this.widths)
             }
         }
     }
