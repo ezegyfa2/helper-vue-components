@@ -6,11 +6,12 @@ nav.navbar.navbar-expand-lg.fixed-top(ref='mainNav')
         )
         button.btn.navbar-toggler(
             type='button' 
+            name='collapse button'
             data-toggle='collapse' 
             v-bind:data-target='"#" + navigationBarId' 
             aria-controls='navbarResponsive' 
             aria-expanded='false' 
-            aria-label='Toggle navigation'
+            aria-label='Menu'
         )
             p.menu-title Menu
             i.menu-icon.fas.fa-bars

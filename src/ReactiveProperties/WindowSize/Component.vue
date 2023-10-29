@@ -16,8 +16,8 @@
         },
         methods: {
             updateWindowSize() {
-                this.windowSize.width = window.innerWidth
-                this.windowSize.height = window.innerHeight
+                this.windowSize.width = window.screen.width
+                this.windowSize.height = window.screen.height
             },
         },
     }
