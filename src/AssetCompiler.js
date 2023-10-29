@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin')
 const { connect } = require('http2')
+require('laravel-mix-compress')
 require('js-helper-methods/objectMethods.js')
 require('js-helper-methods/StringMethods.js')
 

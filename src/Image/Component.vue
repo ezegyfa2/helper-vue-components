@@ -28,12 +28,15 @@
         },
         computed: {
             srcWithSize() {
-                if (this.src && this.width) {
+                if (this.src) {
                     if (this.widths) {
                         return '/images/' + this.src + '/' + this.currentWidth + '.webp'
                     }
-                    else {
+                    else if (this.width) {
                         return 'get-image?path=' + this.src + '&width=' + this.width
+                    }
+                    else {
+                        return this.src
                     }
                 }
                 else {
@@ -41,32 +44,37 @@
                 }
             },
             currentWidth() {
-                if (this.widths.length > 8) {
-                    throw new Error('Invalid width length')
-                }
-                else if (this.windowSize.width > 2560) {
-                    return this.getWidth(7)
-                }
-                else if (this.windowSize.width > 1440) {
-                    return this.getWidth(6)
-                }
-                else if (this.windowSize.width > 1024) {
-                    return this.getWidth(5)
-                }
-                else if (this.windowSize.width > 768) {
-                    return this.getWidth(4)
-                }
-                else if (this.windowSize.width > 425) {
-                    return this.getWidth(3)
-                }
-                else if (this.windowSize.width > 375) {
-                    return this.getWidth(2)
-                }
-                else if (this.windowSize.width > 320) {
-                    return this.getWidth(1)
+                if (this.widths) {
+                    if (this.widths.length > 8) {
+                        throw new Error('Invalid width length')
+                    }
+                    else if (this.windowSize.width > 2560) {
+                        return this.getWidth(7)
+                    }
+                    else if (this.windowSize.width > 1440) {
+                        return this.getWidth(6)
+                    }
+                    else if (this.windowSize.width > 1024) {
+                        return this.getWidth(5)
+                    }
+                    else if (this.windowSize.width > 768) {
+                        return this.getWidth(4)
+                    }
+                    else if (this.windowSize.width > 425) {
+                        return this.getWidth(3)
+                    }
+                    else if (this.windowSize.width > 375) {
+                        return this.getWidth(2)
+                    }
+                    else if (this.windowSize.width > 320) {
+                        return this.getWidth(1)
+                    }
+                    else {
+                        return this.getWidth(0)
+                    }
                 }
                 else {
-                    return this.getWidth(0)
+                    return null
                 }
             }
         },
@@ -76,7 +84,7 @@
                     return this.widths[withNumber]
                 }
                 else {
-                    return this.widths.last()
+                    return this.widths[this.widths.length - 1]
                 }
             }
         }
