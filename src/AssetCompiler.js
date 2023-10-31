@@ -4,27 +4,39 @@ const fs = require('fs')
 const path = require('path')
 const { PurgeCSSPlugin } = require('purgecss-webpack-plugin')
 const { connect } = require('http2')
+require('laravel-mix-compress')
 require('js-helper-methods/objectMethods.js')
 require('js-helper-methods/StringMethods.js')
 
 global.whiteAttributes = []
 global.extractedContents = []
 
-global.compileAssets = (mix, packageName, templateNames) => {
+global.compileAssets = (mix, packageName, templateNames, version) => {
     mix.webpackConfig(currentWebpackConfig)
-    mix.js('resources/js/basicPackages.js', 'public/js').vue()
+    mix.js('resources/js/basicPackages.js', 'public/js/' + version).vue()
     templateNames.forEach(templateName => {
-        compileTemplateAssets(mix, packageName, templateName)
+        compileTemplateAssets(mix, packageName, templateName, version)
     })
     mix.compress()
 }
 
-global.compileTemplateAssets = (mix, packageName, templateName) => {
+global.compileTemplateAssets = (mix, packageName, templateName, version) => {
     const templatePath = path.resolve('node_modules', packageName, 'src', templateName)
     changeMixConfig(mix, templatePath)
     const lowerCaseTemplateName = templateName[0].toLowerCase() + templateName.slice(1)
-    mix.sass('resources/sass/' + lowerCaseTemplateName + '.scss', 'public/css/')
-    mix.js('resources/js/' + lowerCaseTemplateName + '.js', 'public/js').vue().sourceMaps()
+
+    const cssFolderPath = 'public/css/' + version
+    if (!fs.existsSync(cssFolderPath)) {
+        fs.mkdirSync(cssFolderPath)
+    }
+    mix.sass('resources/sass/' + lowerCaseTemplateName + '.scss', cssFolderPath)
+
+    const jsFolderPath = 'public/js/' + version
+    if (!fs.existsSync(jsFolderPath)) {
+        fs.mkdirSync(jsFolderPath)
+    }
+    mix.js('resources/js/' + lowerCaseTemplateName + '.js', jsFolderPath).vue().sourceMaps()
+    
     mix.copy(path.join(templatePath, 'CompiledTemplate.json'), path.join('app/Templates', lowerCaseTemplateName + '.json'))
 }
 

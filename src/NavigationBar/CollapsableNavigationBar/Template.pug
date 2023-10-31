@@ -13,8 +13,8 @@ nav.navbar.navbar-expand-lg.fixed-top(ref='mainNav')
             aria-expanded='false' 
             aria-label='Menu'
         )
-            | Menu
-            i.fas.fa-bars
+            p.menu-title Menu
+            i.menu-icon.fas.fa-bars
         .collapse.navbar-collapse(v-bind:id='navigationBarId')
             ul.navbar-nav.ms-auto.py-4.py-lg-0
                 dynamic-component(
